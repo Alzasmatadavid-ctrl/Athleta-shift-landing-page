@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Gambit — newsletter semanal de ajedrez para jugadores de 1200 a 2200 ELO. Análisis, aperturas y cultura del ajedrez moderno cada domingo.">
+  <title>The Gambit · Newsletter de Ajedrez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <canvas id="canvas-bg" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <div class="site-content">
+
+    <header>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <div class="container">
+          <div class="nav-inner">
+            <a href="#" class="nav-logo" aria-label="The Gambit — inicio">
+              <span class="nav-logo-mark" aria-hidden="true">♞</span>
+              <span class="nav-logo-name">The Gambit</span>
+            </a>
+            <ul class="nav-links" role="list">
+              <li><a href="#temas" class="nav-link">Temas</a></li>
+              <li><a href="#archivo" class="nav-link">Archivo</a></li>
+              <li><a href="#precios" class="nav-link">Precios</a></li>
+              <li><a href="#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <a href="#suscribirse" class="nav-cta btn btn--primary">Suscribirse</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+          <span class="hero-badge" aria-label="Issue número 184, publicada hoy">Issue #184 · Publicada hoy</span>
+
+          <h1 class="hero-title" id="hero-title">
+            El ajedrez tiene más<br>
+            <em>profundidad</em> de la que<br>
+            cualquier app te muestra
+          </h1>
+
+          <p class="hero-lead">
+            Cada domingo, un análisis sin prisas de partidas memorables, aperturas actuales y la cultura que rodea el tablero. Escrita por jugadores titulados para quienes ya entienden el juego y quieren entenderlo mejor.
+          </p>
+
+          <div class="hero-form-wrap">
+            <form class="form-inline form-subscribe" aria-label="Formulario de suscripción">
+              <label for="hero-email" class="visually-hidden">Tu dirección de correo</label>
+              <input type="email" id="hero-email" name="email" placeholder="tu@correo.com" autocomplete="email" required>
+              <button type="submit" class="btn btn--primary">Suscribirse gratis</button>
+            </form>
+          </div>
+
+          <p class="hero-meta">Gratis para siempre · Sin spam · Cancela cuando quieras</p>
+
+          <div class="hero-stats" aria-label="Estadísticas de la newsletter">
+            <div class="stat">
+              <span class="stat-value">28.400+</span>
+              <span class="stat-label">Suscriptores</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">184</span>
+              <span class="stat-label">Issues</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">4,9/5</span>
+              <span class="stat-label">Valoración</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">4 años</span>
+              <span class="stat-label">Publicando</span>
+            </div>
+          </div>
+
+          <div class="scroll-hint" aria-hidden="true">
+            <div class="scroll-hint-line"></div>
+            <span class="scroll-hint-label">Desplaza</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEMAS -->
+      <section id="temas" aria-labelledby="temas-title">
+        <div class="container">
+          <span class="section-kicker reveal">Lo que encontrarás cada semana</span>
+          <h2 class="section-title reveal reveal-delay-1" id="temas-title">
+            Seis ángulos sobre <em>el mismo tablero</em>
+          </h2>
+          <p class="section-lead reveal reveal-delay-2">
+            Cada issue combina al menos dos de estas líneas editoriales. Nunca el mismo formato dos semanas seguidas.
+          </p>
+
+          <ul class="topics-grid" role="list">
+            <li class="topic-card reveal reveal-delay-1">
+              <span class="topic-icon" aria-hidden="true">♙</span>
+              <h3 class="topic-title">Análisis de partidas</h3>
+              <p class="topic-desc">Diseccionamos una partida de alto nivel —o una olvidada de la historia— movimiento a movimiento, explicando las ideas que los motores no verbalizan.</p>
+              <span class="topic-meta">Peón · 8 min de lectura</span>
+            </li>
+            <li class="topic-card reveal reveal-delay-2">
+              <span class="topic-icon" aria-hidden="true">♘</span>
+              <h3 class="topic-title">Repertorio de aperturas</h3>
+              <p class="topic-desc">Una apertura o variante concreta, su lógica posicional, las trampas que debes conocer y cómo encaja en el juego medio que viene después.</p>
+              <span class="topic-meta">Caballo · 6 min de lectura</span>
+            </li>
+            <li class="topic-card reveal reveal-delay-3">
+              <span class="topic-icon" aria-hidden="true">♗</span>
+              <h3 class="topic-title">Estructura y plans</h3>
+              <p class="topic-desc">Estructuras de peones, planes típicos y finales comunes. El conocimiento que separa a un jugador de 1400 de uno de 1800 no está en tácticas: está aquí.</p>
+              <span class="topic-meta">Alfil · 7 min de lectura</span>
+            </li>
+            <li class="topic-card reveal reveal-delay-1">
+              <span class="topic-icon" aria-hidden="true">♖</span>
+              <h3 class="topic-title">Táctica de la semana</h3>
+              <p class="topic-desc">Un problema táctico con contexto: la posición de la que surgió, el jugador que lo ejecutó y qué lo hace instructivo más allá del resultado.</p>
+              <span class="topic-meta">Torre · 4 min de lectura</span>
+            </li>
+            <li class="topic-card reveal reveal-delay-2">
+              <span class="topic-icon" aria-hidden="true">♕</span>
+              <h3 class="topic-title">Grandes maestros</h3>
+              <p class="topic-desc">Perfiles, entrevistas y episodios de la carrera de jugadores actuales y clásicos. El ajedrez lo construyen personas, no algoritmos.</p>
+              <span class="topic-meta">Dama · 5 min de lectura</span>
+            </li>
+            <li class="topic-card reveal reveal-delay-3">
+              <span class="topic-icon" aria-hidden="true">♔</span>
+              <h3 class="topic-title">Cultura del ajedrez</h3>
+              <p class="topic-desc">Libros, películas, torneos, polémicas y el ecosistema online. El tablero no termina en el tablero.</p>
+              <span class="topic-meta">Rey · 3 min de lectura</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SPLIT: ANÁLISIS PROFUNDO -->
+      <section aria-labelledby="analisis-title">
+        <div class="container">
+          <div class="split">
+            <div class="split-text">
+              <span class="section-kicker reveal">Sin ruido de fondo</span>
+              <h2 class="section-title reveal reveal-delay-1" id="analisis-title">
+                Un análisis que <em>respeta</em><br>tu inteligencia
+              </h2>
+              <p class="section-lead reveal reveal-delay-2">
+                No escribimos para el jugador de 800 que acaba de aprender a mover el caballo. Asumimos que sabes calcular variantes, que conoces la teoría básica y que lo que necesitas no son trucos fáciles sino perspectiva editorial profunda.
+              </p>
+              <p class="section-lead reveal reveal-delay-3">
+                Cada análisis incluye diagramas en notación, variantes principales y, cuando aplica, el contexto psicológico de la partida. Porque el ajedrez también se gana antes de sentarse.
+              </p>
+              <a href="#suscribirse" class="btn btn--outline reveal reveal-delay-4 btn--split-cta">Leer el último número</a>
+            </div>
+            <div class="split-visual" aria-hidden="true">
+              <div class="visual-board" role="img" aria-label="Tablero decorativo">
+                <div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div>
+                <div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div>
+                <div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div>
+                <div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div>
+                <div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div>
+                <div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div>
+                <div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div>
+                <div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARCHIVO -->
+      <section id="archivo" aria-labelledby="archivo-title">
+        <div class="container">
+          <span class="section-kicker reveal">Cuatro años de publicaciones</span>
+          <h2 class="section-title reveal reveal-delay-1" id="archivo-title">
+            Números <em>recientes</em>
+          </h2>
+
+          <ol class="archive-list reveal reveal-delay-2" aria-label="Lista de issues recientes">
+            <li class="archive-item">
+              <span class="archive-num">#184</span>
+              <div class="archive-body">
+                <span class="archive-title">El gambito de dama y por qué Carlsen lo abandonó</span>
+                <span class="archive-preview">Analizamos la evolución del repertorio del campeón desde 2018 y lo que revela sobre el ajedrez moderno a nivel élite...</span>
+              </div>
+              <div class="archive-right">
+                <span class="archive-date">25 may 2025</span>
+                <span class="archive-tag">Aperturas</span>
+              </div>
+            </li>
+            <li class="archive-item">
+              <span class="archive-num">#183</span>
+              <div class="archive-body">
+                <span class="archive-title">Nimzowitsch tenía razón: la sobreprotección revisitada</span>
+                <span class="archive-preview">Cien años después, las ideas del maestro letón siguen siendo tan provocadoras como efectivas en el ajedrez contemporáneo...</span>
+              </div>
+              <div class="archive-right">
+                <span class="archive-date">18 may 2025</span>
+                <span class="archive-tag">Clásicos</span>
+              </div>
+            </li>
+            <li class="archive-item">
+              <span class="archive-num">#182</span>
+              <div class="archive-body">
+                <span class="archive-title">Finales de torres: las cinco posiciones que debes conocer de memoria</span>
+                <span class="archive-preview">La posición de Lucena, el puente de Philidor y tres casos menos célebres pero igualmente decisivos cuando el reloj aprieta...</span>
+              </div>
+              <div class="archive-right">
+                <span class="archive-date">11 may 2025</span>
+                <span class="archive-tag">Finales</span>
+              </div>
+            </li>
+            <li class="archive-item">
+              <span class="archive-num">#181</span>
+              <div class="archive-body">
+                <span class="archive-title">Gukesh D: el jugador que no juega a lo que esperabas</span>
+                <span class="archive-preview">El campeón mundial más joven de la historia no es el talento explosivo que los medios pintan. Es algo más interesante: un trabajador metódico...</span>
+              </div>
+              <div class="archive-right">
+                <span class="archive-date">4 may 2025</span>
+                <span class="archive-tag">Perfiles</span>
+              </div>
+            </li>
+            <li class="archive-item">
+              <span class="archive-num">#180</span>
+              <div class="archive-body">
+                <span class="archive-title">La defensa siciliana: guía de sistemas para jugadores de 1400-1800</span>
+                <span class="archive-preview">Najdorf, Scheveningen, Dragón. Cuál encaja con tu estilo y cuál deberías evitar dependiendo de cómo te gusta ganar...</span>
+              </div>
+              <div class="archive-right">
+                <span class="archive-date">27 abr 2025</span>
+                <span class="archive-tag">Aperturas</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- SPLIT: TÁCTICAS -->
+      <section aria-labelledby="tacticas-title">
+        <div class="container">
+          <div class="split split--reverse">
+            <div class="split-text">
+              <span class="section-kicker reveal">Un problema, su contexto</span>
+              <h2 class="section-title reveal reveal-delay-1" id="tacticas-title">
+                Tácticas que <em>enseñan</em>,<br>no solo que entretienen
+              </h2>
+              <p class="section-lead reveal reveal-delay-2">
+                Resolver tácticas en una app es útil. Entender por qué surgió esa táctica, qué error la posibilitó y cómo evitar que te la hagan a ti, eso es lo que cambia tu juego real.
+              </p>
+              <p class="section-lead reveal reveal-delay-3">
+                Cada semana proponemos una posición con su historia completa: la partida de la que proviene, el momento del torneo, las presiones de reloj. El tablero siempre es el contexto de algo más grande.
+              </p>
+            </div>
+            <div class="split-visual" aria-hidden="true">
+              <div class="tactics-visual" role="img" aria-label="Fragmento de tablero de ajedrez decorativo">
+                <div class="tactics-cell dark">♜</div><div class="tactics-cell light"></div><div class="tactics-cell dark"></div><div class="tactics-cell light">♝</div>
+                <div class="tactics-cell light">♟</div><div class="tactics-cell dark"></div><div class="tactics-cell light"></div><div class="tactics-cell dark">♟</div>
+                <div class="tactics-cell dark"></div><div class="tactics-cell light">♟</div><div class="tactics-cell dark">♞</div><div class="tactics-cell light"></div>
+                <div class="tactics-cell light"></div><div class="tactics-cell dark">♙</div><div class="tactics-cell light">♗</div><div class="tactics-cell dark">♖</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LEAD MAGNET -->
+      <section aria-labelledby="guia-title">
+        <div class="container">
+          <article class="lead-magnet reveal">
+            <div class="lead-magnet-inner">
+              <div class="lead-magnet-visual" aria-hidden="true">
+                <div class="book-3d">
+                  <div class="book-spine"></div>
+                  <div class="book-face">
+                    <span class="book-piece-icon">♞</span>
+                    <span class="book-title-text">20 Aperturas<br>Esenciales</span>
+                    <span class="book-subtitle-text">The Gambit · Guía</span>
+                  </div>
+                </div>
+              </div>
+              <div class="lead-magnet-text">
+                <span class="section-kicker">Descarga gratuita</span>
+                <h2 class="section-title" id="guia-title">
+                  Las <em>20 aperturas</em> que todo jugador de club debe dominar
+                </h2>
+                <p class="section-lead">
+                  Una guía de referencia rápida con las líneas principales, los planes típicos y los errores más comunes de cada sistema. Sin teoría innecesaria.
+                </p>
+                <form class="form-stacked form-lead" aria-label="Descargar guía de aperturas">
+                  <label for="lead-email" class="visually-hidden">Tu dirección de correo</label>
+                  <input type="email" id="lead-email" name="email" placeholder="tu@correo.com" autocomplete="email" required>
+                  <button type="submit" class="btn btn--primary btn--full">Descargar la guía gratis</button>
+                </form>
+                <p class="hero-meta hero-meta--spaced">Sin suscripción obligatoria · PDF de 48 páginas</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SPLIT: COMUNIDAD -->
+      <section aria-labelledby="comunidad-title">
+        <div class="container">
+          <div class="split">
+            <div class="split-text">
+              <span class="section-kicker reveal">28.400 lectores activos</span>
+              <h2 class="section-title reveal reveal-delay-1" id="comunidad-title">
+                Una comunidad de jugadores<br>que se <em>toman en serio</em> el juego
+              </h2>
+              <p class="section-lead reveal reveal-delay-2">
+                Nuestros lectores son jugadores de club, participantes de torneos locales y aficionados apasionados que usan el tablero como herramienta de pensamiento. No son espectadores: juegan.
+              </p>
+              <blockquote class="community-quote reveal reveal-delay-3">
+                <p class="community-quote-text">
+                  "Llevo tres años leyendo The Gambit cada domingo. Es la única newsletter de ajedrez que no me hace sentir que el autor está escribiendo para principiantes o para demostrar que sabe más que yo."
+                </p>
+                <cite class="community-quote-author">♟ Rafael Sánchez · 1.840 ELO · Madrid</cite>
+              </blockquote>
+            </div>
+            <div class="split-visual" aria-hidden="true">
+              <div class="visual-board" role="img" aria-label="Tablero decorativo">
+                <div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div>
+                <div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div>
+                <div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div>
+                <div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div>
+                <div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div>
+                <div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div>
+                <div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div>
+                <div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div><div class="visual-board-cell light"></div><div class="visual-board-cell dark"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIOS -->
+      <section aria-labelledby="testimonios-title">
+        <div class="container">
+          <span class="section-kicker reveal">Lo que dicen los lectores</span>
+          <h2 class="section-title reveal reveal-delay-1" id="testimonios-title">
+            Sin escenografía, solo <em>lo que leen</em>
+          </h2>
+
+          <ul class="testimonials-grid reveal reveal-delay-2" role="list">
+            <li class="testimonial-card">
+              <p class="testimonial-quote">
+                La sección de análisis de partidas es lo más cercano a tener un entrenador que me explique qué está pensando el jugador a cada paso. Dos horas de mejora condensadas en ocho minutos.
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar" aria-hidden="true">CM</div>
+                <div class="author-info">
+                  <span class="author-name">Clara Morales</span>
+                  <span class="author-elo">♗ 1.620 ELO · Barcelona</span>
+                </div>
+                <span class="star-rating" aria-label="5 estrellas">★★★★★</span>
+              </div>
+            </li>
+            <li class="testimonial-card">
+              <p class="testimonial-quote">
+                Jugué el Campeonato de Cataluña Sub-2000 en febrero. Tres de las aperturas que trabajé vinieron directamente de issues de The Gambit. Una de ellas acabó siendo la partida del torneo.
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar" aria-hidden="true">JL</div>
+                <div class="author-info">
+                  <span class="author-name">Jordi Llompart</span>
+                  <span class="author-elo">♘ 1.980 ELO · Palma</span>
+                </div>
+                <span class="star-rating" aria-label="5 estrellas">★★★★★</span>
+              </div>
+            </li>
+            <li class="testimonial-card">
+              <p class="testimonial-quote">
+                Había abandonado el ajedrez serio después de la universidad. The Gambit fue lo que me devolvió a los torneos. No te promete que vas a subir ELO. Solo te recuerda por qué el juego merece tiempo.
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar" aria-hidden="true">MP</div>
+                <div class="author-info">
+                  <span class="author-name">Marta Peinado</span>
+                  <span class="author-elo">♙ 1.445 ELO · Valencia</span>
+                </div>
+                <span class="star-rating" aria-label="5 estrellas">★★★★★</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PRECIOS -->
+      <section id="precios" aria-labelledby="precios-title">
+        <div class="container">
+          <span class="section-kicker reveal">Elige tu acceso</span>
+          <h2 class="section-title reveal reveal-delay-1" id="precios-title">
+            Todo lo esencial, <em>gratis para siempre</em>
+          </h2>
+          <p class="section-lead section-lead--centered reveal reveal-delay-2">
+            La newsletter semanal no tiene coste. El plan de pago existe para quienes quieren más profundidad y apoyar el proyecto.
+          </p>
+
+          <div class="pricing-grid reveal reveal-delay-3">
+            <article class="pricing-card" aria-labelledby="plan-apertura">
+              <span class="pricing-plan">Apertura</span>
+              <div class="pricing-price">
+                <span class="pricing-amount">0€</span>
+                <span class="pricing-period">/ mes</span>
+              </div>
+              <p class="pricing-desc">La newsletter semanal completa. Sin límites ni funciones ocultas detrás de un muro de pago.</p>
+              <ul class="pricing-features" role="list">
+                <li class="pricing-feature pricing-feature--included">
+                  <span class="feature-check" aria-hidden="true">♙</span>
+                  Newsletter completa cada domingo
+                </li>
+                <li class="pricing-feature pricing-feature--included">
+                  <span class="feature-check" aria-hidden="true">♙</span>
+                  Archivo de los últimos 12 números
+                </li>
+                <li class="pricing-feature pricing-feature--included">
+                  <span class="feature-check" aria-hidden="true">♙</span>
+                  Guía de 20 aperturas (PDF)
+                </li>
+                <li class="pricing-feature">
+                  <span class="feature-dash" aria-hidden="true">—</span>
+                  Archivo completo (184 issues)
+                </li>
+                <li class="pricing-feature">
+                  <span class="feature-dash" aria-hidden="true">—</span>
+                  Notas ampliadas de análisis
+                </li>
+                <li class="pricing-feature">
+                  <span class="feature-dash" aria-hidden="true">—</span>
+                  Bases de datos de partidas comentadas
+                </li>
+              </ul>
+              <a href="#suscribirse" class="btn btn--outline btn--full">Empezar gratis</a>
+            </article>
+
+            <article class="pricing-card pricing-card--featured" aria-labelledby="plan-gran-maestro">
+              <span class="pricing-badge" aria-label="Plan más popular">Más popular</span>
+              <span class="pricing-plan">Gran Maestro</span>
+              <div class="pricing-price">
+                <span class="pricing-amount">9€</span>
+                <span class="pricing-period">/ mes</span>
+              </div>
+              <p class="pricing-desc">Para el jugador que quiere sacar el máximo partido de cada número y profundizar con recursos exclusivos.</p>
+              <ul class="pricing-features" role="list">
+                <li class="pricing-feature pricing-feature--included">
+                  <span class="feature-check" aria-hidden="true">♟</span>
+                  Newsletter completa cada domingo
+                </li>
+                <li class="pricing-feature pricing-feature--included">
+                  <span class="feature-check" aria-hidden="true">♟</span>
+                  Archivo completo (184 issues)
+                </li>
+                <li class="pricing-feature pricing-feature--included">
+                  <span class="feature-check" aria-hidden="true">♟</span>
+                  Guías y PDFs descargables
+                </li>
+                <li class="pricing-feature pricing-feature--included">
+                  <span class="feature-check" aria-hidden="true">♟</span>
+                  Notas ampliadas de análisis
+                </li>
+                <li class="pricing-feature pricing-feature--included">
+                  <span class="feature-check" aria-hidden="true">♟</span>
+                  Bases de datos de partidas comentadas
+                </li>
+                <li class="pricing-feature pricing-feature--included">
+                  <span class="feature-check" aria-hidden="true">♟</span>
+                  Acceso a sesiones de preguntas mensuales
+                </li>
+              </ul>
+              <form class="form-stacked form-subscribe-pro" aria-label="Suscribirse al plan Gran Maestro">
+                <label for="pro-email" class="visually-hidden">Tu correo para el plan Gran Maestro</label>
+                <input type="email" id="pro-email" name="email" placeholder="tu@correo.com" autocomplete="email" required>
+                <button type="submit" class="btn btn--primary btn--full">Suscribirse por 9€/mes</button>
+              </form>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" aria-labelledby="faq-title">
+        <div class="container container--narrow">
+          <span class="section-kicker reveal">Preguntas frecuentes</span>
+          <h2 class="section-title reveal reveal-delay-1" id="faq-title">
+            Lo que suelen <em>preguntar</em>
+          </h2>
+
+          <dl class="faq-list reveal reveal-delay-2">
+            <div class="faq-item">
+              <dt>
+                <button class="faq-question" aria-expanded="false">
+                  ¿Para qué nivel de juego está pensada la newsletter?
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+              </dt>
+              <dd class="faq-answer">
+                <div class="faq-answer-inner">
+                  Para jugadores de entre 1200 y 2200 ELO aproximadamente. Asumimos que conoces las reglas, que tienes nociones de teoría de aperturas y que eres capaz de seguir una variante de tres o cuatro movimientos sin un tablero delante. Si estás por debajo de 1200 y eres un lector ávido, también la disfrutarás; si estás por encima de 2200, quizá te resulte introductoria en ocasiones.
+                </div>
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt>
+                <button class="faq-question" aria-expanded="false">
+                  ¿Con qué frecuencia se publica?
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+              </dt>
+              <dd class="faq-answer">
+                <div class="faq-answer-inner">
+                  Una vez a la semana, cada domingo por la mañana. Sin semanas vacías, sin números dobles. Llevamos cuatro años con esa cadencia sin saltarnos un solo domingo, incluidos periodos de vacaciones y campeonatos del mundo. Si algo urgente requiere una comunicación extraordinaria, la enviamos como un correo separado claramente etiquetado.
+                </div>
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt>
+                <button class="faq-question" aria-expanded="false">
+                  ¿Quién escribe la newsletter?
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+              </dt>
+              <dd class="faq-answer">
+                <div class="faq-answer-inner">
+                  El equipo editorial está formado por tres jugadores titulados: un Maestro FIDE, una candidata a Maestra Internacional y un Maestro Nacional con más de veinte años en torneos. Ocasionalmente publicamos colaboraciones de invitados, siempre mencionados con nombre y ELO. No hay textos generados por IA ni contenido sindicado.
+                </div>
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt>
+                <button class="faq-question" aria-expanded="false">
+                  ¿Puedo cancelar el plan Gran Maestro cuando quiera?
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+              </dt>
+              <dd class="faq-answer">
+                <div class="faq-answer-inner">
+                  Sí, sin permanencia ni penalización. Si cancelas, mantienes el acceso hasta el final del periodo de facturación en curso. No hacemos retenciones ni correos de "¿seguro que quieres irte?". También puedes pausar la suscripción hasta tres meses al año si viajas o tienes una temporada de poco tiempo.
+                </div>
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt>
+                <button class="faq-question" aria-expanded="false">
+                  ¿La newsletter cubre solo ajedrez clásico o también el online y el rápido?
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+              </dt>
+              <dd class="faq-answer">
+                <div class="faq-answer-inner">
+                  Cubrimos ajedrez clásico como base editorial, pero el mundo online y el formato rápido forman parte inevitable del juego contemporáneo y los tratamos cuando hay algo de fondo que contar. Analizamos partidas de torneos oficiales FIDE y, ocasionalmente, partidas de plataformas online cuando el nivel o el contexto lo justifica. No cubrimos resultados de ligas amateurs ni torneos de blitz sin relevancia histórica.
+                </div>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- CTA FINAL -->
+      <section id="suscribirse" class="cta-final" aria-labelledby="cta-title">
+        <div class="container">
+          <span class="section-kicker reveal">El domingo que viene</span>
+          <h2 class="section-title reveal reveal-delay-1" id="cta-title">
+            Tu próxima lectura de ajedrez<br>debería <em>importarte</em>
+          </h2>
+          <p class="section-lead section-lead--centered reveal reveal-delay-2">
+            Únete a 28.400 jugadores que esperan el domingo con otro motivo.
+          </p>
+          <form class="form-inline form-subscribe form-inline--centered reveal reveal-delay-3" aria-label="Formulario de suscripción final">
+            <label for="cta-email" class="visually-hidden">Tu dirección de correo</label>
+            <input type="email" id="cta-email" name="email" placeholder="tu@correo.com" autocomplete="email" required>
+            <button type="submit" class="btn btn--primary">Suscribirse gratis</button>
+          </form>
+          <p class="hero-meta reveal reveal-delay-4">Gratis · Cada domingo · Sin spam · Cancela cuando quieras</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-brand-logo">
+              <span class="nav-logo-mark" aria-hidden="true">♞</span>
+              <span class="nav-logo-name">The Gambit</span>
+            </div>
+            <p class="footer-brand-desc">
+              Newsletter semanal de ajedrez para jugadores que se toman en serio el juego. Publicada cada domingo desde 2021.
+            </p>
+          </div>
+
+          <nav aria-label="Producto">
+            <h3 class="footer-col-title">Producto</h3>
+            <ul class="footer-links" role="list">
+              <li><a href="#temas" class="footer-link">Temas</a></li>
+              <li><a href="#archivo" class="footer-link">Archivo</a></li>
+              <li><a href="#precios" class="footer-link">Precios</a></li>
+              <li><a href="#suscribirse" class="footer-link">Suscribirse</a></li>
+            </ul>
+          </nav>
+
+          <nav aria-label="Compañía">
+            <h3 class="footer-col-title">Compañía</h3>
+            <ul class="footer-links" role="list">
+              <li><a href="#" class="footer-link">Acerca de</a></li>
+              <li><a href="#" class="footer-link">Equipo editorial</a></li>
+              <li><a href="#" class="footer-link">Colaboraciones</a></li>
+              <li><a href="#" class="footer-link">Contacto</a></li>
+            </ul>
+          </nav>
+
+          <nav aria-label="Legal">
+            <h3 class="footer-col-title">Legal</h3>
+            <ul class="footer-links" role="list">
+              <li><a href="#" class="footer-link">Privacidad</a></li>
+              <li><a href="#" class="footer-link">Términos</a></li>
+              <li><a href="#" class="footer-link">Cookies</a></li>
+              <li><a href="#" class="footer-link">RGPD</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer-bar">
+          <span class="footer-bar-copy">© 2025 The Gambit. Todos los derechos reservados.</span>
+          <span class="footer-bar-piece" aria-hidden="true">♔</span>
+          <span class="footer-bar-copy">Hecho con cuidado editorial para jugadores reales.</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast" role="alert" aria-live="polite" aria-atomic="true">
+    <span class="toast-icon" aria-hidden="true">♟</span>
+    <div class="toast-body">
+      <span class="toast-title"></span>
+      <span class="toast-desc"></span>
+    </div>
+    <button class="toast-close" aria-label="Cerrar notificación">×</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/scene.js" defer></script>
+  <script src="js/interactions.js" defer></script>
+  <script src="js/forms.js" defer></script>
+
+</body>
+</html>
