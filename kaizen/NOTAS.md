@@ -116,6 +116,15 @@ Leer primero el artifact (acción `read` con su dirección) y publicar con esa m
 
 David quiere usar su conector **«highsfield»** (Higgsfield, generación de imagen y vídeo con IA) para dar a la página el nivel fotorrealista de la referencia de las montañas. El conector solo se carga al iniciar una sesión; debe estar conectado en https://claude.ai/customize/connectors.
 
+### Lo comprobado con el conector
+
+- El conector se llama `highsfield` y sus herramientas empiezan por `mcp__highsfield__`. Generar exige créditos en la cuenta de Higgsfield (`balance` los muestra; `generate_image` y `generate_video` admiten `get_cost: true` para saber el coste sin gastar).
+- **Imagen:** `nano_banana_2_1`, `gpt_image_2` y `cinematic_studio_2_5` admiten imagen de referencia y hasta 4K; a 2K cuestan 2 créditos por imagen.
+- **Vídeo con imagen inicial y final** (`start_image`, `end_image`), clip de 5 s: `minimax_h3` (2K) 10 créditos; `wan3_0` (1080p, sin audio) 17,5; `flux_3_video` (1080p, sin audio) 40. Sin imagen final, `seedance_2_5` cuesta 35.
+- Presupuesto orientativo del plan: 5 imágenes (10 créditos) y 4 clips (40–70 créditos).
+- **Formato cuadrado:** generar las imágenes clave en 1:1 con la cumbre algo a la derecha del centro. Un mismo archivo sirve para el recorte 16:9 de escritorio y el 9:16 de móvil.
+- **Antes del vídeo, las imágenes ya dan resultado:** con las cuatro imágenes clave se puede montar el ascenso como fundido entre ellas guiado por el scroll, con un leve movimiento de cámara. El vídeo es una mejora posterior.
+
 ### Reglas
 
 1. **Solo paisaje.** No generar ni retocar personas, cuerpos, fotos de antes y después ni testimonios. David y sus clientes salen siempre con sus fotos reales.
