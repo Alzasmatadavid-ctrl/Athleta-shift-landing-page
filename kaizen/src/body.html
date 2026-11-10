@@ -1,0 +1,419 @@
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Método Kaizen, inicio">
+      <img src="assets/logo-kaizen.png" alt="" width="44" height="22">
+      <span>Método Kaizen</span>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#metodo">El método</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#dudas">Dudas</a>
+      <a class="btn sm" href="#aplicar">Empezar</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+</header>
+
+<main id="inicio">
+
+  <!-- 1 · HERO -->
+  <section class="hero window" id="hero" data-alt="0" data-dawn="0" data-peak="0" data-summit="0">
+    <div class="hero-stage">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <p class="hero-tag hero-tag-l"><b>Método Kaizen</b><br>Pérdida de grasa</p>
+      <p class="hero-tag hero-tag-r">Para hombres<br><b>de 25 a 45 años</b></p>
+      <p class="hero-tag hero-tag-m">Pérdida de grasa · Hombres de 25 a 45</p>
+      <h1 class="hero-title" aria-label="Pierde grasa y que esta vez dure.">
+        <span class="ht1" aria-hidden="true"><span class="ht-l"><span class="ht-w"><span>Pierde</span></span></span><span class="ht-gap"></span><span class="ht-r"><span class="ht-w"><span>grasa</span></span></span></span>
+        <span class="ht2" aria-hidden="true"><span class="ht-w"><em>y que esta vez</em></span><span class="ht-dure"><span class="ht-w"><span>dure.</span></span><svg class="scr scr-under" viewBox="0 0 300 28" preserveAspectRatio="none"><path pathLength="1" d="M4 15 C 40 5, 78 22, 120 11 S 198 5, 238 13 S 282 18, 296 8"/><path pathLength="1" d="M34 24 C 92 16, 152 26, 264 18"/></svg></span></span>
+      </h1>
+      <figure class="hero-fig"><img src="assets/hero-david-cut.webp" alt="David Alzas, creador del Método Kaizen" width="607" height="910" fetchpriority="high"></figure>
+    </div>
+    <div class="wrap hero-base">
+      <p class="hero-sub"><strong>Entrenamiento y alimentación adaptados a tu vida</strong>, con seguimiento 1&nbsp;a&nbsp;1. Mejoras pequeñas cada semana, sin dietas extremas y sin volver a empezar cada lunes.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#aplicar" data-magnetic>Quiero mi transformación <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <span class="cta-note">Solicitud de 2 min · Respuesta en menos de 48 h</span>
+      </div>
+      <div class="hero-proof">
+        <div class="avatars" aria-hidden="true">
+          <img src="assets/avatar-david.webp" alt="" width="44" height="44">
+          <img src="assets/avatar-ivan.webp" alt="" width="44" height="44">
+          <img src="assets/avatar-juanpablo.webp" alt="" width="44" height="44">
+        </div>
+        <p><b>+50 clientes</b>−50 kg perdidos</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true">
+    <div class="tape-track">
+      <span>Kaizen<i>·</i><span class="kj">改善</span><i>·</i>Mejora continua<i>·</i>Un paso cada semana<i>·</i>Kaizen<i>·</i><span class="kj">改善</span><i>·</i>Mejora continua<i>·</i>Un paso cada semana<i>·</i></span>
+      <span>Kaizen<i>·</i><span class="kj">改善</span><i>·</i>Mejora continua<i>·</i>Un paso cada semana<i>·</i>Kaizen<i>·</i><span class="kj">改善</span><i>·</i>Mejora continua<i>·</i>Un paso cada semana<i>·</i></span>
+    </div>
+  </div>
+
+  <!-- 2 · LOS LUNES -->
+  <section class="lunes" id="problema" aria-label="El problema">
+    <div class="lunes-stage">
+      <div class="wrap lunes-grid">
+        <div class="lunes-count">
+          <span class="mono">Lunes n.º</span>
+          <span class="lunes-num" id="lunes-num">52</span>
+        </div>
+        <div class="lunes-copy">
+          <p class="lunes-a">Un año tiene <b>52 lunes.</b></p>
+          <p class="lunes-b" id="lunes-b">¿Cuántos llevas diciendo <em>«el lunes empiezo»</em>?</p>
+          <div class="weeks" id="weeks" aria-hidden="true"></div>
+          <p class="mono weeks-cap">52 semanas · 52 oportunidades de empezar de cero</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec pains">
+    <div class="wrap">
+      <p class="eyebrow">¿Te suena?</p>
+      <h2 class="h2 rv">Empezar no es tu problema. <em>Sostenerlo,</em> sí.</h2>
+      <p class="lead rv">No necesitas identificarte con todo. Con una sola frase ya sabes de qué hablamos.</p>
+      <ol class="pain-list">
+        <li><span class="pn">01</span><q>Llevo años diciendo que empiezo el lunes.</q><p>Una cena, un viaje, una semana mala. Y pasa otro mes sin que nada cambie.</p></li>
+        <li><span class="pn">02</span><q>Lo he probado todo y nada me ha durado.</q><p>Arrancas con energía y en tres semanas estás donde empezaste.</p></li>
+        <li><span class="pn">03</span><q>Ya no me reconozco en el espejo.</q><p>Evitas las fotos y quitarte la camiseta en la playa. Y te estás acostumbrando.</p></li>
+        <li><span class="pn">04</span><q>Pagué a un entrenador y desapareció.</q><p>Un PDF el primer día y no volviste a saber de él.</p></li>
+        <li><span class="pn">05</span><q>Entreno, pero ya no avanzo.</q><p>Los mismos pesos desde hace meses y cada vez menos energía.</p></li>
+        <li><span class="pn">06</span><q>Hay tanta información que no sé qué hacer.</q><p>¿Cardio o pesas? ¿Ayuno o cinco comidas? Cada cuenta dice lo contrario.</p></li>
+      </ol>
+      <div class="verdict">
+        <p class="rv">El problema no son tus ganas. Es que nadie te ha dado <em>un sistema que encaje en tu vida.</em></p>
+        <a class="btn" href="#aplicar">Quiero ese sistema <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · HISTORIA -->
+  <section class="sec story" id="historia" style="padding-top:0">
+    <div class="wrap story-grid">
+      <div class="story-text">
+        <p class="eyebrow">Por qué existe Kaizen</p>
+        <h2 class="h2 rv">Sé lo que se siente. <em>Yo estuve ahí.</em></h2>
+        <div style="height:30px"></div>
+        <p>Fui el flaco al que nadie tomaba en serio en el gimnasio. En un año <strong>pasé de 65 a 95 kg</strong>: entrenaba, pero descuidé la alimentación. No era el físico que buscaba. Era grasa, y me miraba al espejo sin reconocerme.</p>
+        <p>Entendí que no me faltaban ganas, me faltaba un método. Me formé en biomecánica, fisiología y ciencia del entrenamiento con el <strong>CPE de Fit Generation</strong> y convertí ese proceso en un sistema. Con él <strong>perdí 25 kg en 9 meses</strong>. Hoy lo aplico con cada cliente.</p>
+        <span class="sign">David Alzas<svg class="scr" viewBox="0 0 200 14" preserveAspectRatio="none"><path pathLength="1" d="M3 8 C 40 2, 90 13, 196 5"/></svg></span>
+      </div>
+      <div class="pile">
+        <figure class="print"><img src="assets/historia-antes.webp" alt="David antes de empezar, muy delgado" loading="lazy" width="420" height="910" style="--oy:30%"><figcaption>Antes</figcaption></figure>
+        <figure class="print"><img src="assets/historia-camino.webp" alt="David durante su proceso" loading="lazy" width="852" height="910" style="--oy:20%"><figcaption>En el camino</figcaption></figure>
+        <figure class="print"><img src="assets/historia-hoy.webp" alt="David hoy" loading="lazy" width="443" height="960" style="--oy:22%"><figcaption>Hoy</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3b · MANIFIESTO -->
+  <section class="sec creed" id="kaizen" aria-label="Qué significa Kaizen">
+    <span class="creed-kanji" aria-hidden="true">改善</span>
+    <div class="wrap">
+      <p class="eyebrow">Kaizen · 改善</p>
+      <p class="creed-text" id="creed">Kaizen significa <em>mejora continua.</em> No se trata de hacerlo perfecto. Se trata de hacerlo <em>un poco mejor</em> cada semana, durante el tiempo suficiente.</p>
+    </div>
+  </section>
+
+  <!-- 4 · MECANISMO -->
+  <section class="sec mech" id="metodo">
+    <div class="wrap">
+      <p class="eyebrow">El mecanismo</p>
+      <h2 class="h2 rv">No es otra dieta. <em>Ni otro reto.</em></h2>
+      <p class="lead rv">La diferencia no está en la intensidad. Está en si dentro de un año sigues manteniéndolo.</p>
+      <div class="mech-grid">
+        <div>
+          <div class="chart" id="chart">
+            <span class="ax ax-y">Peso ↑</span>
+            <span class="ax ax-x">Tiempo →</span>
+            <span class="tagc tag-old">Rebote</span>
+            <span class="tagc tag-new">Paso a paso</span>
+            <svg viewBox="0 0 720 400" role="img" aria-label="Ilustración: la dieta extrema baja rápido y rebota; Kaizen baja poco a poco y se mantiene.">
+              <g stroke="rgba(214,224,255,.09)" stroke-width="1"><path d="M30 84H700M30 174H700M30 264H700M30 354H700"/></g>
+              <path class="yo" pathLength="1" d="M30 138 C 62 138, 80 330, 122 330 S 192 95, 236 95 S 302 319, 346 319 S 420 84, 466 84 S 536 311, 580 311 S 660 89, 698 84"/>
+              <path class="kz" pathLength="1" d="M30 138 H80 L104 165 H154 L178 192 H228 L252 219 H302 L326 246 H376 L400 273 H450 L474 300 H524 L548 327 H598 L622 354 H698"/>
+              <g id="chart-dots" fill="#05070D" stroke="#A9C3FF" stroke-width="3"><circle cx="104" cy="165" r="6.5"/><circle cx="178" cy="192" r="6.5"/><circle cx="252" cy="219" r="6.5"/><circle cx="326" cy="246" r="6.5"/><circle cx="400" cy="273" r="6.5"/><circle cx="474" cy="300" r="6.5"/><circle cx="548" cy="327" r="6.5"/><circle cx="622" cy="354" r="6.5"/></g>
+              <circle cx="30" cy="138" r="7" fill="#F2F0EA"/>
+            </svg>
+          </div>
+          <p class="chart-cap">Ilustración del concepto, no son datos de clientes. Cada punto azul es una revisión.</p>
+        </div>
+        <ul class="vs">
+          <li class="vs-head"><span>Todo o nada</span><span>Método Kaizen</span></li>
+          <li><span>Dietas extremas y prohibiciones</span><span>Comida normal, flexible y variada</span></li>
+          <li><span>Depender de la motivación</span><span>Un sistema y unos hábitos</span></li>
+          <li><span>Plan genérico y te quedas solo</span><span>Plan a tu medida, ajustado en cada revisión</span></li>
+          <li><span>Empezar de cero cada lunes</span><span>Mejorar un poco cada semana</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · EL ASCENSO -->
+  <section class="ascent window" id="ascenso" data-scrub data-alt=".3" data-dawn=".3" data-peak="1" data-summit="0" aria-label="Cómo funciona el Método Kaizen">
+    <div class="ascent-stage">
+      <div class="as-scrim" aria-hidden="true"></div>
+      <div class="wrap as-inner">
+        <article class="frame frame-intro">
+          <p class="eyebrow">Así funciona Kaizen</p>
+          <h2 class="h2">Una montaña se sube <em>paso a paso.</em></h2>
+          <p class="lead">Cinco etapas. Y dentro de ellas, tu plan.</p>
+          <p class="scroll-cue" aria-hidden="true"><i></i>Sigue bajando para subir</p>
+        </article>
+        <article class="frame" data-camp="Campo base">
+          <span class="camp">Campo base · 01 / 05</span>
+          <h3>Analizamos</h3>
+          <p>Antes de darte un plan entendemos tu situación: objetivos, horarios, experiencia, alimentación, hábitos y lesiones.</p>
+          <p class="why"><b>Por qué dura</b>Partimos de tu realidad, no de un plan genérico.</p>
+        </article>
+        <article class="frame" data-camp="Campamento I">
+          <span class="camp">Campamento I · 02 / 05</span>
+          <h3>Personalizamos</h3>
+          <p>Con ese análisis construimos tu estrategia de entrenamiento y alimentación.</p>
+          <p class="why"><b>Por qué dura</b>Adaptamos el plan a tu vida, no tu vida al plan.</p>
+        </article>
+        <article class="frame" data-camp="Campamento II">
+          <span class="camp">Campamento II · 03 / 05</span>
+          <h3>Implementamos</h3>
+          <p>Cambios realistas, uno detrás de otro, que caben entre el trabajo, la familia y la vida social.</p>
+          <p class="why"><b>Por qué dura</b>Un cambio gradual es más fácil de mantener que uno brusco.</p>
+        </article>
+        <article class="frame" data-camp="Campamento III">
+          <span class="camp">Campamento III · 04 / 05</span>
+          <h3>Medimos y ajustamos</h3>
+          <p>Revisamos tu evolución con métricas, fotos y formularios. Lo que funciona se queda; lo que no, se cambia.</p>
+          <p class="why"><b>Por qué dura</b>Decides con datos, no con la báscula de un mal día.</p>
+        </article>
+        <article class="frame" data-camp="Cumbre">
+          <span class="camp">Cumbre · 05 / 05</span>
+          <h3>Transformamos</h3>
+          <p>Los cambios mantenidos acaban generando una transformación física y también de hábitos.</p>
+          <p class="why"><b>Por qué dura</b>Llegas arriba sabiendo cómo mantenerte.</p>
+          <div class="cta-row"><a class="btn" href="#aplicar">Empezar mi ascenso <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+        </article>
+        <div class="as-num" id="as-num" aria-hidden="true"></div>
+        <div class="as-alt" aria-hidden="true">
+          <b>CUMBRE</b><u id="as-fill"></u>
+          <s style="bottom:0"></s><s style="bottom:25%"></s><s style="bottom:50%"></s><s style="bottom:75%"></s><s style="bottom:100%"></s>
+          <i id="as-dot"></i><em id="as-read">0%</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · PRUEBAS -->
+  <section class="sec proof light" id="resultados">
+    <div class="wrap">
+      <div class="proof-head">
+        <div>
+          <p class="eyebrow">Resultados</p>
+          <h2 class="h2 rv">Ellos ya dieron <em>el primer paso.</em></h2>
+        </div>
+        <div class="figs">
+          <div><b><span class="count" data-pre="+" data-to="50">+50</span></b><span>Clientes acompañados</span></div>
+          <div><b><span class="count" data-pre="−" data-to="50">−50</span><small>kg</small></b><span>Perdidos</span></div>
+        </div>
+      </div>
+
+      <div class="cases">
+        <article class="case">
+          <div class="case-prints">
+            <figure class="print"><img src="assets/david-antes.webp" alt="David antes" loading="lazy" width="148" height="340"><figcaption>Antes</figcaption></figure>
+            <figure class="print"><img src="assets/david-despues.webp" alt="David después" loading="lazy" width="157" height="340"><figcaption>Después</figcaption></figure>
+          </div>
+          <p class="case-num">−25<small>kg</small></p>
+          <p class="case-time">En 9 meses</p>
+          <blockquote>«Pasé de entrenar sin rumbo y frustrarme por no ver cambios a entender cómo transformar mi físico de verdad. Por eso creé Kaizen.»</blockquote>
+          <p class="case-who"><b>David Alzas</b>Creador del Método Kaizen</p>
+        </article>
+        <article class="case">
+          <div class="case-prints">
+            <figure class="print"><img src="assets/ivan-antes.webp" alt="Ivan antes" loading="lazy" width="261" height="340"><figcaption>Antes</figcaption></figure>
+            <figure class="print"><img src="assets/ivan-despues.webp" alt="Ivan después" loading="lazy" width="152" height="340"><figcaption>Después</figcaption></figure>
+          </div>
+          <p class="case-num">−9<small>kg</small></p>
+          <p class="case-time">En 6 semanas</p>
+          <blockquote>«Por mi trabajo y mis horarios pensaba que bajar grasa era casi imposible. Entendí que no necesitaba hacerlo perfecto: necesitaba un plan adaptado a mi vida.»</blockquote>
+          <p class="case-who"><b>Ivan</b>Socorrista · Nadador en categorías máster y absoluta</p>
+        </article>
+        <article class="case">
+          <div class="case-prints">
+            <figure class="print"><img src="assets/juanpablo-antes.webp" alt="Juan Pablo antes" loading="lazy" width="340" height="318" style="--oy:40%"><figcaption>Antes</figcaption></figure>
+            <figure class="print"><img src="assets/juanpablo-despues.webp" alt="Juan Pablo después" loading="lazy" width="181" height="272" style="--oy:45%"><figcaption>Después</figcaption></figure>
+          </div>
+          <p class="case-num">−5<small>kg</small></p>
+          <p class="case-time">En 6 semanas</p>
+          <blockquote>«Entre la universidad, el teatro y el trabajo pensaba que era imposible mejorar mi físico. He perdido grasa y he comprobado que se puede avanzar con poco tiempo.»</blockquote>
+          <p class="case-who"><b>Juan Pablo</b>Universitario, actor de teatro y monitor de natación</p>
+        </article>
+      </div>
+      <p class="disclaimer">Fotos y testimonios publicados con permiso de cada persona. Los resultados dependen del punto de partida, la constancia y el contexto de cada uno; no prometemos cifras ni plazos.</p>
+      <div class="cta-row">
+        <a class="btn" href="#aplicar">Quiero ser el siguiente <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <span class="cta-note">Solicitud de 2 min · Sin compromiso</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · LA MOCHILA -->
+  <section class="sec pack" id="incluye">
+    <svg class="topo" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g class="topo-lines"><path class="hi" d="M265 0Q304 32 359 64Q414 96 443 117Q472 139 477 141Q482 144 489 145Q496 146 500 145Q505 144 512 140Q520 136 532 124Q544 112 555 96Q567 80 592 40L617 0"/><path class="hi" d="M1077 0Q1093 64 1102 82Q1112 100 1124 114Q1136 128 1168 151L1200 175"/><path class="hi" d="M0 193Q24 215 32 226Q40 237 47 250Q54 264 58 276Q63 288 68 312Q74 336 80 388Q87 440 100 480Q113 520 117 540Q122 560 123 584Q125 608 123 632Q121 656 115 680Q109 704 97 736Q85 768 85 776Q84 784 86 785Q88 787 92 788Q96 789 104 787Q112 786 156 773Q200 761 240 753Q280 745 380 729Q480 714 508 712Q536 709 588 714Q640 718 696 718Q752 719 772 722Q792 725 801 730Q811 736 818 744Q825 752 828 760Q832 768 834 784L837 800"/><path d="M767 0Q720 18 708 25Q696 31 684 40Q672 49 652 68Q632 87 588 140Q544 192 528 205Q512 217 500 222Q488 226 476 225Q464 225 455 220Q446 216 439 207Q432 199 411 167Q391 136 383 127Q376 118 361 107Q347 96 285 58Q224 21 212 15Q200 10 188 6Q176 3 164 2Q152 1 136 4Q120 7 108 12Q96 18 84 26Q72 34 61 45Q50 56 43 68Q35 80 32 92Q29 104 30 116Q30 128 34 140Q38 152 59 197Q80 242 90 273Q100 304 125 400Q150 496 160 576Q171 656 175 668Q180 680 187 688Q194 696 205 701Q216 706 232 708Q248 711 268 711Q288 711 316 708Q344 705 368 700Q392 696 416 690Q440 683 500 661Q560 640 572 637Q584 635 596 635Q608 635 652 649Q696 663 712 665Q728 667 772 671Q816 675 825 677Q835 680 844 684Q853 688 861 696Q870 704 875 712Q879 720 890 760L901 800"/><path d="M1015 0Q1034 24 1048 56Q1063 88 1072 104Q1081 120 1092 133Q1104 147 1130 173Q1157 200 1163 208Q1169 216 1174 224Q1178 232 1181 244Q1185 256 1186 272Q1188 288 1183 336Q1178 384 1177 400Q1177 416 1180 428Q1184 441 1192 452L1200 463"/><path d="M1200 541Q1144 499 1139 493Q1134 488 1131 480Q1128 472 1127 464Q1126 456 1126 444Q1127 432 1135 392Q1143 352 1145 332Q1147 312 1147 296Q1146 280 1142 264Q1137 248 1127 232Q1117 216 1086 178Q1056 141 1028 95Q1000 49 991 40Q982 32 971 25Q960 19 948 16Q936 12 924 11Q912 10 884 11Q856 13 824 20Q792 28 764 40Q736 51 716 64Q696 77 676 94Q657 112 642 128Q628 144 598 180Q568 217 552 233Q536 249 520 259Q504 269 488 273Q472 277 464 277Q456 277 448 276Q440 274 432 270Q424 267 417 261Q410 256 402 244Q394 232 380 200Q367 168 358 156Q350 144 335 129Q320 114 300 101Q280 88 256 77Q232 66 220 63Q208 59 196 57Q184 55 172 55Q160 56 152 58Q144 60 136 63Q128 67 119 73Q111 80 105 88Q99 96 95 108Q91 120 90 132Q89 144 92 160Q94 176 105 216Q117 256 139 316Q161 376 167 396Q173 416 178 440Q182 464 187 516Q193 568 197 588Q200 608 207 624Q213 640 222 650Q232 660 244 666Q256 672 276 676Q296 679 316 679Q336 678 360 674Q384 670 404 664Q424 658 444 650Q464 642 512 614Q560 586 572 581Q584 575 596 572Q608 569 620 569Q632 570 644 575Q656 579 680 593Q704 606 720 612Q736 619 756 623Q776 627 820 631Q864 636 872 638Q880 640 888 644Q897 648 904 654Q912 660 917 670Q922 680 930 712Q938 744 943 756Q947 768 953 777Q960 786 968 793L977 800"/><path d="M1200 720Q1184 744 1172 757Q1160 769 1148 778Q1136 787 1122 793L1109 800"/><path class="hi" d="M852 42Q832 45 812 50Q792 56 772 65Q752 73 736 83Q720 93 704 105Q688 118 672 134Q656 150 616 200Q576 251 560 268Q544 284 528 295Q512 305 504 308Q496 311 484 313Q472 315 456 315Q440 315 428 312Q416 310 404 305Q392 300 384 294Q376 288 369 276Q361 264 352 232Q343 200 335 184Q328 168 318 156Q308 144 291 132Q275 120 257 112Q240 104 228 101Q216 99 208 98Q200 98 192 98Q184 99 176 102Q168 104 162 108Q156 112 150 118Q144 125 140 133Q136 141 133 150Q131 160 131 172Q131 184 133 196Q134 208 138 224Q142 240 148 256Q154 272 175 312Q195 352 202 368Q208 384 211 404Q214 424 215 468Q216 512 218 532Q219 552 224 572Q229 592 235 604Q241 616 248 624Q256 632 268 638Q280 645 296 648Q312 652 328 652Q344 652 364 649Q384 645 400 640Q416 635 432 628Q448 621 466 610Q484 600 522 571Q560 542 572 534Q584 527 596 523Q608 519 616 518Q624 517 632 518Q640 519 652 524Q664 528 696 548Q728 568 748 577Q768 586 792 590Q816 594 868 597Q920 599 933 603Q947 608 952 612Q957 616 961 624Q965 632 970 668Q975 704 980 720Q984 736 992 746Q1000 757 1012 765Q1024 772 1032 774Q1040 776 1052 776Q1064 777 1072 776Q1080 774 1091 771Q1103 768 1119 758Q1136 749 1150 734Q1164 720 1172 704Q1181 688 1185 672Q1190 656 1190 640Q1190 624 1187 613Q1184 602 1180 596Q1176 589 1168 581Q1160 573 1125 554Q1090 536 1085 530Q1080 524 1077 518Q1075 512 1074 504Q1074 496 1076 484Q1077 472 1091 424Q1105 376 1109 356Q1112 336 1113 316Q1113 296 1108 280Q1104 264 1096 248Q1087 232 1063 200Q1040 169 1016 132Q992 95 982 83Q972 72 962 63Q952 55 940 50Q928 45 916 42Q904 40 888 40Q872 39 852 42Z"/><path d="M824 75Q808 78 792 84Q776 90 760 99Q744 107 728 119Q712 130 696 145Q680 160 666 176Q652 192 618 241Q584 290 572 304Q560 319 552 326Q544 333 536 337Q528 342 512 346Q496 351 476 352Q456 353 428 350Q400 348 376 344Q352 340 334 334Q316 328 312 324Q307 320 305 316Q304 312 303 304Q303 296 305 272Q306 248 305 236Q305 224 301 212Q298 200 293 190Q288 180 277 170Q267 160 253 153Q240 146 228 145Q216 144 208 146Q200 149 196 151Q192 154 186 161Q180 168 177 180Q174 192 174 204Q175 216 179 229Q184 243 189 253Q194 264 201 273Q208 282 216 290Q224 298 242 313Q260 328 264 332Q267 336 268 340Q270 344 269 356Q269 368 259 416Q249 464 248 492Q246 520 248 536Q251 552 255 564Q259 576 265 586Q272 596 280 603Q288 610 300 615Q312 621 328 622Q344 624 364 621Q384 619 400 613Q417 608 432 600Q448 592 464 580Q481 568 524 526Q568 484 576 479Q584 475 596 471Q608 468 620 468Q632 468 644 472Q656 475 672 484Q688 492 724 516Q760 540 776 546Q792 553 808 556Q824 559 848 559Q872 559 900 555Q928 551 948 544Q968 537 976 532Q984 528 992 521Q1000 514 1008 505Q1016 496 1026 480Q1036 464 1044 448Q1052 432 1060 412Q1068 392 1072 376Q1076 360 1078 344Q1080 328 1079 316Q1078 304 1075 292Q1072 280 1067 268Q1062 256 1054 244Q1047 232 1011 180Q976 128 964 114Q952 100 940 91Q928 82 916 78Q904 73 888 71Q872 69 856 70Q840 71 824 75Z"/><path d="M1063 619Q1055 624 1047 632Q1040 641 1035 652Q1031 664 1030 676Q1030 688 1032 696Q1034 704 1041 712Q1048 720 1056 723Q1064 727 1076 726Q1088 725 1100 720Q1112 714 1120 705Q1129 696 1134 684Q1139 672 1140 660Q1140 648 1138 642Q1136 636 1132 631Q1128 626 1120 621Q1112 616 1104 614Q1096 612 1084 613Q1072 615 1063 619Z"/><path d="M796 110Q776 117 759 126Q743 136 724 152Q704 168 689 184Q675 200 658 224Q642 248 629 272Q617 296 607 320Q598 344 595 360Q592 376 595 384Q598 392 601 396Q605 400 646 424Q688 448 724 473Q760 498 776 507Q792 515 812 520Q832 525 852 526Q872 526 892 522Q912 518 932 509Q952 500 965 490Q979 480 993 464Q1007 448 1018 428Q1029 408 1036 388Q1043 368 1045 348Q1048 328 1045 312Q1043 296 1034 276Q1026 256 997 211Q968 167 952 148Q936 129 924 120Q912 111 896 105Q880 99 864 99Q848 98 832 100Q816 103 796 110Z"/><path d="M340 395Q328 400 320 407Q312 413 304 422Q297 432 293 440Q289 448 285 460Q282 472 279 488Q277 504 278 516Q279 528 282 540Q285 552 290 560Q296 569 303 576Q311 584 319 587Q328 591 336 592Q344 594 352 594Q360 594 372 593Q384 591 396 587Q408 583 420 577Q432 570 449 557Q466 544 482 524Q499 504 506 492Q513 480 518 468Q524 456 526 448Q528 440 528 432Q527 424 525 420Q523 416 517 411Q512 406 503 403Q495 400 479 396Q464 392 432 389Q400 386 388 386Q376 386 364 388Q352 390 340 395Z"/><path class="hi" d="M816 130Q800 134 784 141Q768 148 753 158Q739 168 725 180Q712 192 699 208Q686 224 674 244Q663 264 656 280Q650 296 648 312Q645 328 646 340Q647 352 651 360Q654 368 660 376Q666 384 674 392Q682 400 709 420Q736 441 756 455Q776 469 792 477Q808 485 820 488Q832 491 848 492Q864 494 880 491Q896 489 912 482Q928 476 942 466Q957 456 969 444Q980 432 990 416Q1000 400 1006 384Q1012 368 1014 352Q1016 336 1014 320Q1012 304 1006 287Q1000 271 983 243Q966 216 949 192Q931 168 921 158Q912 149 900 142Q888 134 876 131Q864 127 848 127Q832 127 816 130Z"/><path class="hi" d="M356 438Q344 444 335 454Q327 464 322 476Q317 488 316 496Q315 504 316 512Q316 520 318 525Q320 530 324 536Q328 543 336 549Q344 554 356 557Q368 559 376 558Q384 557 392 554Q400 552 413 544Q426 536 437 524Q448 512 454 500Q460 488 462 476Q463 464 459 455Q456 447 452 443Q448 439 440 435Q432 431 416 428Q400 426 384 428Q368 431 356 438Z"/><path d="M804 162Q792 165 780 171Q768 178 756 186Q744 195 732 208Q720 220 710 234Q701 248 696 260Q690 272 687 284Q684 296 683 308Q683 320 685 330Q688 340 693 350Q698 360 705 368Q712 376 724 388Q736 400 752 412Q768 424 784 433Q800 443 812 448Q824 453 836 456Q848 458 860 458Q872 458 884 456Q896 453 908 448Q920 442 932 433Q944 424 953 412Q963 400 969 388Q975 376 978 364Q981 352 981 340Q981 328 978 312Q974 296 967 280Q960 264 948 244Q936 224 924 208Q911 192 899 181Q888 171 876 166Q864 160 852 158Q840 156 828 157Q816 158 804 162Z"/><path d="M816 192Q808 193 796 198Q784 203 776 208Q768 213 760 221Q752 228 744 238Q737 248 732 256Q728 264 725 276Q721 288 721 296Q721 304 722 312Q723 320 727 328Q730 336 735 344Q740 352 748 360Q755 368 765 376Q776 385 788 392Q800 400 812 406Q824 412 832 414Q840 416 852 417Q864 418 872 417Q880 416 888 413Q896 410 904 405Q912 399 919 391Q926 384 931 376Q935 368 938 360Q940 352 941 340Q942 328 940 316Q938 304 934 292Q929 280 921 264Q912 248 904 237Q896 226 888 218Q880 210 872 204Q864 199 856 196Q848 193 836 192Q824 191 816 192Z"/><path class="hi" d="M796 236Q784 242 776 252Q768 261 764 270Q760 280 760 292Q760 304 765 316Q770 328 781 339Q792 351 806 359Q820 368 834 371Q848 374 860 372Q872 370 879 365Q887 360 890 356Q893 352 896 340Q900 328 898 312Q896 296 888 280Q881 264 869 252Q858 240 853 236Q848 233 840 230Q832 228 820 229Q808 229 796 236Z"/></g>
+    </svg>
+    <div class="wrap pack-grid">
+      <div class="pack-head">
+        <p class="eyebrow">El acompañamiento</p>
+        <h2 class="h2 rv">Lo que llevas <em>en la mochila.</em></h2>
+        <p class="lead">No es un PDF y adiós. Es un proceso en el que no subes solo.</p>
+        <p class="price-note"><b>La inversión</b>Depende de tu caso y del acompañamiento que necesites. Te la explico con claridad en la llamada de valoración, sin compromiso.</p>
+        <a class="btn" href="#aplicar">Solicitar mi valoración <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+      <ol class="pack-list">
+        <li><span class="pk-n">01</span><div><h3>Análisis inicial completo</h3><p>Formulario y llamada de valoración para conocer tu punto de partida, tu agenda y lo que ya has probado.</p></div><span class="pk-tag">Antes de empezar</span></li>
+        <li><span class="pk-n">02</span><div><h3>Entrenamiento a medida</h3><p>Diseñado según tu nivel, los días que tienes y el material del que dispones.</p></div><span class="pk-tag">Tu plan</span></li>
+        <li><span class="pk-n">03</span><div><h3>Alimentación flexible</h3><p>Sin prohibiciones ni menús imposibles: adaptada a tus gustos, tus horarios y tus comidas fuera.</p></div><span class="pk-tag">Tu plan</span></li>
+        <li><span class="pk-n">04</span><div><h3>Revisiones de progreso</h3><p>Métricas, fotos y formularios para medir tu evolución de forma objetiva.</p></div><span class="pk-tag">Cada revisión</span></li>
+        <li><span class="pk-n">05</span><div><h3>Ajustes continuos</h3><p>En cada revisión ajustamos entrenamiento y nutrición según cómo respondes.</p></div><span class="pk-tag">Cada revisión</span></li>
+        <li><span class="pk-n">06</span><div><h3>Contacto 1 a 1 conmigo</h3><p>Hablas directamente con David para resolver dudas y no quedarte atascado.</p></div><span class="pk-tag">Siempre</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 8 · PARA QUIÉN -->
+  <section class="sec fit" id="para-quien">
+    <div class="wrap">
+      <p class="eyebrow">Antes de solicitar plaza</p>
+      <h2 class="h2 rv">Kaizen no es <em>para todo el mundo.</em></h2>
+      <div class="permit">
+        <div class="permit-top"><span>Permiso de ascenso</span><span>Método Kaizen · 改善</span></div>
+        <div class="permit-body">
+          <div class="permit-col yes">
+            <h3>Es para ti si…</h3>
+            <ul>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Eres un hombre de 25 a 45 años y quieres perder grasa y verte mejor.</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Has probado dietas o rutinas que no te duraron.</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Tienes poco tiempo y necesitas un plan que encaje en tu agenda.</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Quieres entender lo que haces y aprender a mantenerlo.</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Estás dispuesto a comprometerte con el proceso y con tus revisiones.</li>
+          </ul>
+            <span class="stamp stamp-yes" aria-hidden="true">Apto</span>
+          </div>
+          <div class="permit-col no">
+            <h3>No es para ti si…</h3>
+            <ul>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Buscas perder 15 kg en un mes.</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Quieres una dieta milagro o un reto de 21 días.</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Solo quieres un PDF para hacerlo por tu cuenta.</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>No estás dispuesto a seguir un plan ni a medir tu progreso.</li>
+          </ul>
+            <span class="stamp stamp-no" aria-hidden="true">No apto</span>
+          </div>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="#aplicar">Encajo, quiero mi plaza <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · DUDAS -->
+  <section class="sec faq light" id="dudas">
+    <div class="wrap faq-grid">
+      <div>
+        <p class="eyebrow">Dudas frecuentes</p>
+        <h2 class="h2 rv">Lo que te frena, <em>respondido.</em></h2>
+        <p class="lead">¿Tienes otra duda? Escríbela en el formulario y la vemos en la llamada.</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>No tengo tiempo. ¿Esto es para mí?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+          <div class="ans"><p>Sí. El plan se construye a partir del tiempo que tienes de verdad, no del que deberías tener. Ivan y Juan Pablo tenían trabajo, estudios y horarios cambiantes, y avanzaron igualmente.</p></div>
+        </details>
+        <details>
+          <summary>Ya he fallado antes. ¿Por qué ahora sería distinto?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+          <div class="ans"><p>Porque no dependes de la motivación. Kaizen se basa en cambios pequeños que puedes mantener, revisiones periódicas y ajustes cuando algo no funciona. Y no lo haces solo.</p></div>
+        </details>
+        <details>
+          <summary>¿Voy a tener que hacer una dieta estricta?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+          <div class="ans"><p>No. Para perder grasa hace falta comer algo menos de lo que gastas de forma sostenida, y eso se consigue con comida normal que te guste. Sin prohibir grupos de alimentos ni pasar hambre.</p></div>
+        </details>
+        <details>
+          <summary>¿Cuánto cuesta?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+          <div class="ans"><p>Depende de tu situación y del acompañamiento que necesites. Te lo explico en la llamada de valoración, una vez sepamos si Kaizen encaja contigo. La llamada no tiene compromiso.</p></div>
+        </details>
+        <details>
+          <summary>¿Y si viajo o como fuera a menudo?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+          <div class="ans"><p>Es parte de la vida real y lo tenemos en cuenta. Aprendes a gestionar comidas fuera, viajes y semanas complicadas, y en cada revisión adaptamos el plan.</p></div>
+        </details>
+        <details>
+          <summary>¿Cuándo empezaré a ver resultados?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+          <div class="ans"><p>Depende de tu punto de partida y de tu constancia, así que no te voy a prometer plazos. Lo que sí hacemos es medir desde la primera revisión, para que veas con datos si avanzas y ajustemos si no.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · LA CUMBRE -->
+  <section class="summit" id="aplicar">
+    <div class="summit-view window" data-alt="1" data-dawn=".92" data-peak="0" data-summit="1">
+      <div class="wrap">
+        <p class="eyebrow">La cumbre empieza aquí</p>
+        <h2 class="h2 rv">Tu primer paso <em>es pequeño.</em></h2>
+        <p class="lead">Rellena la solicitud. Reviso tu caso personalmente y, si Kaizen encaja contigo, te llamo.</p>
+      </div>
+    </div>
+    <div class="summit-body">
+      <div class="wrap offer-grid">
+        <div>
+          <div class="mini-proof">
+            <div class="avatars" aria-hidden="true">
+              <img src="assets/avatar-david.webp" alt="" width="44" height="44" loading="lazy">
+              <img src="assets/avatar-ivan.webp" alt="" width="44" height="44" loading="lazy">
+              <img src="assets/avatar-juanpablo.webp" alt="" width="44" height="44" loading="lazy">
+            </div>
+            <p><b>+50 hombres</b> ya han dado este paso.</p>
+          </div>
+          <ol class="path">
+            <li><div><b>Solicitud de 2 minutos</b><span>Me cuentas tu situación y tu objetivo.</span></div></li>
+            <li><div><b>Llamada de valoración</b><span>Te contacto en menos de 48 h. Vemos tu caso y si podemos trabajar juntos.</span></div></li>
+            <li><div><b>Empiezas tu plan Kaizen</b><span>Análisis, plan a medida y seguimiento 1 a 1 desde el primer día.</span></div></li>
+          </ol>
+          <div class="pledge">
+            <span class="pledge-tag"><img src="assets/logo-kaizen.png" alt="" width="26" height="13">Compromiso Kaizen</span>
+            <p>Si sigues el plan y haces todas tus revisiones durante las <strong>primeras 8 semanas</strong> y no hay ningún progreso medible, <strong>te devuelvo tu dinero.</strong></p>
+            <small>Te explico las condiciones exactas en la llamada de valoración.</small>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="form-head"><b>Solicitud · Método Kaizen</b><span>2 min</span></div>
+          <div id="form-slot">
+            <noscript><p style="padding:24px;color:#fff">Abre el formulario aquí: <a href="https://form.jotform.com/260646326019052">solicitud Método Kaizen</a></p></noscript>
+          </div>
+          <div class="form-foot">¿No se carga? <a href="https://form.jotform.com/260646326019052" target="_blank" rel="noopener">Abre la solicitud en una pestaña nueva</a>. Tus datos solo se usan para valorar tu caso.</div>
+        </div>
+      </div>
+      <div class="wrap closing">
+        <p class="display rv">Que este sea <em>el último lunes</em> que empiezas de cero.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><img src="assets/logo-da.png" alt="" width="28" height="24"><span>David Alzas Coach</span></a>
+    <span>© 2026 Método Kaizen · Transformación física online</span>
+    <a href="https://www.instagram.com/davidalzascoach" target="_blank" rel="noopener">Instagram @davidalzascoach</a>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="sticky-cta">
+  <a class="btn" href="#aplicar">Quiero mi transformación <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+</div>
