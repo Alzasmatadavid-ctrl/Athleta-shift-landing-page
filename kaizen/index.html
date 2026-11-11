@@ -15,6 +15,8 @@
 <title>Método Kaizen</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preload" as="image" href="assets/hero-david-cut.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/fondos/hero-d.webp" media="(orientation: landscape)">
+<link rel="preload" as="image" href="assets/fondos/hero-m.webp" media="(orientation: portrait)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
@@ -54,6 +56,15 @@ a{color:inherit}
 .top,main,.foot{position:relative;z-index:1}
 .window{background:transparent}
 .no-gl .window{background:radial-gradient(90% 60% at 50% 100%,rgba(43,99,214,.30),transparent 70%)}
+
+/* Fondos fotográficos: la foto queda fija a la pantalla y el contenido pasa por delante.
+   El recorte de la sección (clip-path) hace de ventana. */
+.hero,.summit-view{clip-path:inset(0)}
+.plate{position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;z-index:0;overflow:hidden;pointer-events:none;opacity:0;transition:opacity 1s ease}
+.plate.is-ready{opacity:1}
+.plate img{display:block;width:100%;height:100%;object-fit:cover}
+.plate::after{content:"";position:absolute;inset:0}
+@media (prefers-reduced-motion:reduce){.plate{position:absolute;height:100%;transition:none}}
 .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* Tipografía */
@@ -106,6 +117,14 @@ a{color:inherit}
 /* 1 · HERO */
 .hero{--stage-h:clamp(380px,calc(100vh - 250px),900px);position:relative;display:flex;flex-direction:column;min-height:100vh;min-height:100svh;padding-top:calc(var(--head) + env(safe-area-inset-top,0px))}
 @supports (height:1svh){.hero{--stage-h:clamp(380px,calc(100svh - 250px),900px)}}
+.hero-plate::after{background:linear-gradient(to bottom,rgba(5,7,13,.5) 0%,rgba(5,7,13,.16) 24%,rgba(5,7,13,.2) 56%,rgba(5,7,13,.78) 100%)}
+@media (max-width:760px), (max-width:1100px) and (orientation:portrait){
+  .hero-plate::after{background:linear-gradient(to bottom,rgba(5,7,13,.5) 0%,rgba(5,7,13,.1) 15%,rgba(5,7,13,.2) 31%,rgba(5,7,13,.76) 46%,rgba(5,7,13,.93) 60%,var(--night) 100%)}
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  @keyframes drift{from{transform:scale(1.02)}to{transform:scale(1.075) translate3d(-.7%,-.5%,0)}}
+  .hero-plate img{animation:drift 28s ease-in-out infinite alternate}
+}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(to bottom,rgba(5,7,13,0),rgba(5,7,13,.5) 50%,rgba(5,7,13,.9) 88%,var(--night));pointer-events:none}
 .hero-stage{position:relative;flex:0 0 auto;height:var(--stage-h);width:100%;max-width:1760px;margin-inline:auto}
 .hero-glow{position:absolute;left:50%;top:46%;width:min(74vw,900px);aspect-ratio:1;margin:calc(min(74vw,900px) / -2) 0 0 calc(min(74vw,900px) / -2);background:radial-gradient(closest-side,rgba(43,99,214,.46),rgba(43,99,214,.26) 30%,rgba(43,99,214,.11) 58%,rgba(43,99,214,.03) 82%,rgba(43,99,214,0));pointer-events:none}
@@ -282,7 +301,7 @@ a{color:inherit}
 
 /* 5 · El ascenso */
 .ascent{position:relative;background:var(--night-2);padding-block:var(--sec)}
-.as-scrim,.as-num,.as-alt{display:none}
+.as-scrim,.as-num,.as-alt,.as-film{display:none}
 .frame{max-width:640px;margin-bottom:64px}
 .frame:last-child{margin-bottom:0}
 .frame .camp{display:block;font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ice);margin-bottom:12px}
@@ -296,6 +315,11 @@ a{color:inherit}
 .js-motion .ascent{background:transparent;padding-block:0;height:520vh}
 .js-motion .ascent-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .js-motion .as-scrim{display:block;position:absolute;inset:0;background:linear-gradient(to top,rgba(5,7,13,.92) 0%,rgba(5,7,13,.55) 38%,rgba(5,7,13,0) 68%),linear-gradient(to right,rgba(5,7,13,.5),rgba(5,7,13,0) 55%)}
+/* La película del ascenso: cuatro fotos apiladas que se funden y se desplazan con el scroll */
+.js-motion .as-film{display:block;position:absolute;inset:0;overflow:hidden}
+.as-plate{position:absolute;left:0;top:-9%;width:100%;height:118%;opacity:0;visibility:hidden;will-change:opacity,transform}
+.as-plate img{display:block;width:100%;height:100%;object-fit:cover}
+.js-motion .has-film .as-scrim{background:linear-gradient(to top,rgba(5,7,13,.95) 0%,rgba(5,7,13,.72) 30%,rgba(5,7,13,.18) 62%,rgba(5,7,13,0) 78%),linear-gradient(to right,rgba(5,7,13,.6),rgba(5,7,13,0) 60%),linear-gradient(to bottom,rgba(5,7,13,.55),rgba(5,7,13,0) 22%)}
 .js-motion .as-inner{position:relative;height:100%}
 .js-motion .frame{position:absolute;left:var(--gl);right:var(--gr);bottom:clamp(40px,9vh,96px);margin:0;opacity:0;visibility:hidden;will-change:opacity,transform}
 .js-motion .frame-intro{bottom:auto;top:50%;margin-top:-140px}
@@ -426,7 +450,13 @@ a{color:inherit}
 .summit-view{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-start;padding-top:clamp(92px,13vh,150px);padding-bottom:46vh}
 .summit-view::before{content:"";position:absolute;inset:0 0 auto;height:62%;background:linear-gradient(to bottom,rgba(5,7,13,.62),rgba(5,7,13,.34) 60%,rgba(5,7,13,0));pointer-events:none}
 .summit-view .wrap{position:relative}
-.summit-view .h2{font-size:clamp(48px,9vw,140px)}
+.summit-plate img{object-position:50% 0;transform:scale(1.22);transform-origin:50% 0}
+.summit-plate::after{background:radial-gradient(125% 105% at 0% 0%,rgba(5,7,13,.8),rgba(5,7,13,.46) 40%,rgba(5,7,13,0) 70%)}
+@media (orientation:portrait){
+  .summit-plate img{transform:scale(1.3)}
+  .summit-plate::after{background:linear-gradient(to bottom,rgba(5,7,13,.84) 0%,rgba(5,7,13,.66) 36%,rgba(5,7,13,.12) 56%,rgba(5,7,13,0) 66%)}
+}
+.summit-view .h2{font-size:clamp(44px,7.6vw,112px);text-shadow:0 2px 34px rgba(5,7,13,.5)}
 .summit-view .lead{color:#F2F0EA;text-shadow:0 1px 18px rgba(5,7,13,.55)}
 .summit-body{position:relative;background:var(--night);padding-bottom:var(--sec)}
 .summit-body::before{content:"";position:absolute;left:0;right:0;top:-150px;height:151px;background:linear-gradient(to bottom,rgba(5,7,13,0),rgba(5,7,13,.72) 62%,var(--night));pointer-events:none}
@@ -505,6 +535,7 @@ a{color:inherit}
 
   <!-- 1 · HERO -->
   <section class="hero window" id="hero" data-alt="0" data-dawn="0" data-peak="0" data-summit="0">
+    <div class="plate hero-plate" aria-hidden="true"><picture><source media="(orientation: portrait)" srcset="assets/fondos/hero-m.webp"><img src="assets/fondos/hero-d.webp" alt="" width="1792" height="1120" decoding="async" fetchpriority="high"></picture></div>
     <div class="hero-stage">
       <div class="hero-glow" aria-hidden="true"></div>
       <p class="hero-tag hero-tag-l"><b>Método Kaizen</b><br>Pérdida de grasa</p>
@@ -643,6 +674,12 @@ a{color:inherit}
   <!-- 5 · EL ASCENSO -->
   <section class="ascent window" id="ascenso" data-scrub data-alt=".3" data-dawn=".3" data-peak="1" data-summit="0" aria-label="Cómo funciona el Método Kaizen">
     <div class="ascent-stage">
+      <div class="as-film" aria-hidden="true">
+        <picture class="as-plate"><source media="(orientation: portrait)" data-srcset="assets/fondos/k0-m.webp"><img data-src="assets/fondos/k0-d.webp" alt="" width="1792" height="1344" decoding="async"></picture>
+        <picture class="as-plate"><source media="(orientation: portrait)" data-srcset="assets/fondos/k1-m.webp"><img data-src="assets/fondos/k1-d.webp" alt="" width="1792" height="1344" decoding="async"></picture>
+        <picture class="as-plate"><source media="(orientation: portrait)" data-srcset="assets/fondos/k2-m.webp"><img data-src="assets/fondos/k2-d.webp" alt="" width="1792" height="1344" decoding="async"></picture>
+        <picture class="as-plate"><source media="(orientation: portrait)" data-srcset="assets/fondos/k3-m.webp"><img data-src="assets/fondos/k3-d.webp" alt="" width="1792" height="1344" decoding="async"></picture>
+      </div>
       <div class="as-scrim" aria-hidden="true"></div>
       <div class="wrap as-inner">
         <article class="frame frame-intro">
@@ -847,6 +884,7 @@ a{color:inherit}
   <!-- 10 · LA CUMBRE -->
   <section class="summit" id="aplicar">
     <div class="summit-view window" data-alt="1" data-dawn=".92" data-peak="0" data-summit="1">
+      <div class="plate summit-plate" aria-hidden="true"><picture><source media="(orientation: portrait)" data-srcset="assets/fondos/k3-m.webp"><img data-src="assets/fondos/k3-d.webp" alt="" width="1792" height="1344" decoding="async"></picture></div>
       <div class="wrap">
         <p class="eyebrow">La cumbre empieza aquí</p>
         <h2 class="h2 rv">Tu primer paso <em>es pequeño.</em></h2>
@@ -987,7 +1025,10 @@ a{color:inherit}
   })();
 
   /* ---------- El cielo: montañas generadas por código (WebGL) ---------- */
-  var Sky = (function () {
+  // Es el respaldo de los fondos fotográficos: solo se crea si una foto tarda en llegar.
+  var Sky = null, skyTried = false;
+  function sky() { if (!skyTried) { skyTried = true; Sky = createSky(); } return Sky; }
+  function createSky() {
     var canvas = d.getElementById('sky');
     if (!canvas) return null;
     var gl = null;
@@ -1082,25 +1123,38 @@ a{color:inherit}
     };
     draw(performance.now());
     return api;
-  })();
+  }
 
-  /* ---------- Qué "ventana" al cielo está en pantalla ---------- */
-  var activeWin = null;
+  /* ---------- Qué "ventana" está en pantalla: si su foto ya cubre, el cielo por código descansa ---------- */
+  var activeWin = null, repick = function () {};
   (function windows() {
-    if (!Sky || !('IntersectionObserver' in window)) return;
-    var vis = [];
+    if (!('IntersectionObserver' in window)) return;
+    var vis = [], timer = 0;
     var wins = $$('.window');
     function stateOf(el) {
       if (el._sky) return el._sky;
       return { alt: el.getAttribute('data-alt') || 0, dawn: el.getAttribute('data-dawn') || 0, peak: el.getAttribute('data-peak') || 0, summit: el.getAttribute('data-summit') || 0 };
     }
+    function fallback() {
+      timer = 0;
+      if (!activeWin || activeWin._covered) return;
+      var s = sky();
+      if (s) { s.set(stateOf(activeWin)); s.jump(); s.start(); }
+    }
     function pick() {
       var best = null, bh = 0;
       vis.forEach(function (v) { if (v.h > bh) { bh = v.h; best = v.el; } });
-      if (!best) { activeWin = null; Sky.stop(); return; }
-      if (best !== activeWin) { activeWin = best; Sky.set(stateOf(best)); Sky.jump(); }
-      Sky.start();
+      var changed = best !== activeWin;
+      activeWin = best;
+      if (!best || best._covered) {
+        if (Sky) Sky.stop();
+        if (timer) { clearTimeout(timer); timer = 0; }
+        return;
+      }
+      if (Sky) { if (changed) { Sky.set(stateOf(best)); Sky.jump(); } Sky.start(); }
+      else if (!timer) timer = setTimeout(fallback, 450);   // margen para que llegue la foto antes de arrancar WebGL
     }
+    repick = pick;
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         var rec = null;
@@ -1112,6 +1166,30 @@ a{color:inherit}
     }, { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] });
     wins.forEach(function (el) { io.observe(el); });
   })();
+
+  /* ---------- Fondos fotográficos ---------- */
+  function loadPicture(pic) {
+    $$('source[data-srcset]', pic).forEach(function (s) { s.srcset = s.getAttribute('data-srcset'); s.removeAttribute('data-srcset'); });
+    var img = $('img', pic);
+    if (img.getAttribute('data-src')) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); }
+    return img;
+  }
+  function whenReady(img, cb) {
+    function done() { if (img.decode) img.decode().then(cb, cb); else cb(); }
+    if (img.complete && img.naturalWidth) done(); else img.addEventListener('load', done, { once: true });
+  }
+  function whenNear(el, cb) {   // avisa una sola vez, cuando el elemento se acerca a la pantalla
+    if (!('IntersectionObserver' in window)) { cb(); return; }
+    var io = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); cb(); }
+    }, { rootMargin: '150% 0px' });
+    io.observe(el);
+  }
+  $$('.plate').forEach(function (plate) {
+    var win = plate.parentNode, pic = $('picture', plate);
+    function go() { whenReady(loadPicture(pic), function () { plate.classList.add('is-ready'); win._covered = true; repick(); }); }
+    if ($('img[data-src]', plate)) whenNear(win, go); else go();
+  });
 
   /* ---------- Movimiento (solo si el usuario no ha pedido reducirlo) ---------- */
   if (reduce || !window.gsap || !window.ScrollTrigger) return;
@@ -1249,8 +1327,37 @@ a{color:inherit}
     var frames = $$('.frame', sec), n = frames.length;
     var num = d.getElementById('as-num'), dot = d.getElementById('as-dot'), fill = d.getElementById('as-fill'), read = d.getElementById('as-read');
     var ticks = $$('.as-alt s', sec), cur = -1;
+    // La película: cuatro fotos. SPAN es el tramo, medido en etapas, en el que se ve cada una.
+    var plates = $$('.as-plate', sec), ready = [], lastF = 0;
+    // Los cambios de foto coinciden con los cambios de etapa: noche (inicio y 01), hora azul (02 y 03),
+    // primera luz (04) y amanecer en la cumbre (05).
+    var SPAN = [[0, 2.3], [1.7, 4.3], [3.7, 5.3], [4.7, 6]];
+    function film(f) {
+      var last = plates.length - 1;
+      for (var i = 0; i <= last; i++) {
+        var st = plates[i].style;
+        var a = i === 0 ? 1 : clamp((f - SPAN[i][0]) / (SPAN[i - 1][1] - SPAN[i][0]));          // entrada
+        a = a * a * (3 - 2 * a);
+        var out = i < last ? clamp((f - SPAN[i + 1][0]) / (SPAN[i][1] - SPAN[i + 1][0])) : 0;    // salida
+        if (!ready[i] || a < 0.002 || (out >= 1 && ready[i + 1])) { st.visibility = 'hidden'; continue; }
+        var t = clamp((f - SPAN[i][0]) / (SPAN[i][1] - SPAN[i][0]));
+        st.visibility = 'visible'; st.opacity = a;
+        // La cámara sube: la escena baja un poco y se acerca. Al salir, la foto se adelanta hacia la siguiente.
+        st.transform = 'translate3d(0,' + (t * 8 - 2).toFixed(2) + '%,0) scale(' + (1.02 + t * 0.06 + out * out * 0.12).toFixed(4) + ')';
+      }
+    }
+    whenNear(sec, function () {
+      plates.forEach(function (pic, i) {
+        whenReady(loadPicture(pic), function () {
+          ready[i] = true;
+          if (i === 0) { sec._covered = true; sec.classList.add('has-film'); repick(); }
+          film(lastF);
+        });
+      });
+    });
     function update(p) {
       var f = p * n, idx = Math.min(n - 1, Math.floor(f)), local = f - idx;
+      lastF = f; film(f);
       for (var i = 0; i < n; i++) {
         var o = 0, y = 0;
         if (i === idx) {

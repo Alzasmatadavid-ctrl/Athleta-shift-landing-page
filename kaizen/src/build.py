@@ -41,6 +41,8 @@ js = js.replace("/*__FRAG__*/''", json.dumps(frag_min))
 page = f'''<title>Método Kaizen</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preload" as="image" href="assets/hero-david-cut.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/fondos/hero-d.webp" media="(orientation: landscape)">
+<link rel="preload" as="image" href="assets/fondos/hero-m.webp" media="(orientation: portrait)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">

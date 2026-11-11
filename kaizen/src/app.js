@@ -79,7 +79,10 @@
   })();
 
   /* ---------- El cielo: montañas generadas por código (WebGL) ---------- */
-  var Sky = (function () {
+  // Es el respaldo de los fondos fotográficos: solo se crea si una foto tarda en llegar.
+  var Sky = null, skyTried = false;
+  function sky() { if (!skyTried) { skyTried = true; Sky = createSky(); } return Sky; }
+  function createSky() {
     var canvas = d.getElementById('sky');
     if (!canvas) return null;
     var gl = null;
@@ -174,25 +177,38 @@
     };
     draw(performance.now());
     return api;
-  })();
+  }
 
-  /* ---------- Qué "ventana" al cielo está en pantalla ---------- */
-  var activeWin = null;
+  /* ---------- Qué "ventana" está en pantalla: si su foto ya cubre, el cielo por código descansa ---------- */
+  var activeWin = null, repick = function () {};
   (function windows() {
-    if (!Sky || !('IntersectionObserver' in window)) return;
-    var vis = [];
+    if (!('IntersectionObserver' in window)) return;
+    var vis = [], timer = 0;
     var wins = $$('.window');
     function stateOf(el) {
       if (el._sky) return el._sky;
       return { alt: el.getAttribute('data-alt') || 0, dawn: el.getAttribute('data-dawn') || 0, peak: el.getAttribute('data-peak') || 0, summit: el.getAttribute('data-summit') || 0 };
     }
+    function fallback() {
+      timer = 0;
+      if (!activeWin || activeWin._covered) return;
+      var s = sky();
+      if (s) { s.set(stateOf(activeWin)); s.jump(); s.start(); }
+    }
     function pick() {
       var best = null, bh = 0;
       vis.forEach(function (v) { if (v.h > bh) { bh = v.h; best = v.el; } });
-      if (!best) { activeWin = null; Sky.stop(); return; }
-      if (best !== activeWin) { activeWin = best; Sky.set(stateOf(best)); Sky.jump(); }
-      Sky.start();
+      var changed = best !== activeWin;
+      activeWin = best;
+      if (!best || best._covered) {
+        if (Sky) Sky.stop();
+        if (timer) { clearTimeout(timer); timer = 0; }
+        return;
+      }
+      if (Sky) { if (changed) { Sky.set(stateOf(best)); Sky.jump(); } Sky.start(); }
+      else if (!timer) timer = setTimeout(fallback, 450);   // margen para que llegue la foto antes de arrancar WebGL
     }
+    repick = pick;
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         var rec = null;
@@ -204,6 +220,30 @@
     }, { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] });
     wins.forEach(function (el) { io.observe(el); });
   })();
+
+  /* ---------- Fondos fotográficos ---------- */
+  function loadPicture(pic) {
+    $$('source[data-srcset]', pic).forEach(function (s) { s.srcset = s.getAttribute('data-srcset'); s.removeAttribute('data-srcset'); });
+    var img = $('img', pic);
+    if (img.getAttribute('data-src')) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); }
+    return img;
+  }
+  function whenReady(img, cb) {
+    function done() { if (img.decode) img.decode().then(cb, cb); else cb(); }
+    if (img.complete && img.naturalWidth) done(); else img.addEventListener('load', done, { once: true });
+  }
+  function whenNear(el, cb) {   // avisa una sola vez, cuando el elemento se acerca a la pantalla
+    if (!('IntersectionObserver' in window)) { cb(); return; }
+    var io = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); cb(); }
+    }, { rootMargin: '150% 0px' });
+    io.observe(el);
+  }
+  $$('.plate').forEach(function (plate) {
+    var win = plate.parentNode, pic = $('picture', plate);
+    function go() { whenReady(loadPicture(pic), function () { plate.classList.add('is-ready'); win._covered = true; repick(); }); }
+    if ($('img[data-src]', plate)) whenNear(win, go); else go();
+  });
 
   /* ---------- Movimiento (solo si el usuario no ha pedido reducirlo) ---------- */
   if (reduce || !window.gsap || !window.ScrollTrigger) return;
@@ -341,8 +381,37 @@
     var frames = $$('.frame', sec), n = frames.length;
     var num = d.getElementById('as-num'), dot = d.getElementById('as-dot'), fill = d.getElementById('as-fill'), read = d.getElementById('as-read');
     var ticks = $$('.as-alt s', sec), cur = -1;
+    // La película: cuatro fotos. SPAN es el tramo, medido en etapas, en el que se ve cada una.
+    var plates = $$('.as-plate', sec), ready = [], lastF = 0;
+    // Los cambios de foto coinciden con los cambios de etapa: noche (inicio y 01), hora azul (02 y 03),
+    // primera luz (04) y amanecer en la cumbre (05).
+    var SPAN = [[0, 2.3], [1.7, 4.3], [3.7, 5.3], [4.7, 6]];
+    function film(f) {
+      var last = plates.length - 1;
+      for (var i = 0; i <= last; i++) {
+        var st = plates[i].style;
+        var a = i === 0 ? 1 : clamp((f - SPAN[i][0]) / (SPAN[i - 1][1] - SPAN[i][0]));          // entrada
+        a = a * a * (3 - 2 * a);
+        var out = i < last ? clamp((f - SPAN[i + 1][0]) / (SPAN[i][1] - SPAN[i + 1][0])) : 0;    // salida
+        if (!ready[i] || a < 0.002 || (out >= 1 && ready[i + 1])) { st.visibility = 'hidden'; continue; }
+        var t = clamp((f - SPAN[i][0]) / (SPAN[i][1] - SPAN[i][0]));
+        st.visibility = 'visible'; st.opacity = a;
+        // La cámara sube: la escena baja un poco y se acerca. Al salir, la foto se adelanta hacia la siguiente.
+        st.transform = 'translate3d(0,' + (t * 8 - 2).toFixed(2) + '%,0) scale(' + (1.02 + t * 0.06 + out * out * 0.12).toFixed(4) + ')';
+      }
+    }
+    whenNear(sec, function () {
+      plates.forEach(function (pic, i) {
+        whenReady(loadPicture(pic), function () {
+          ready[i] = true;
+          if (i === 0) { sec._covered = true; sec.classList.add('has-film'); repick(); }
+          film(lastF);
+        });
+      });
+    });
     function update(p) {
       var f = p * n, idx = Math.min(n - 1, Math.floor(f)), local = f - idx;
+      lastF = f; film(f);
       for (var i = 0; i < n; i++) {
         var o = 0, y = 0;
         if (i === idx) {
