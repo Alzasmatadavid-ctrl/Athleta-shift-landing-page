@@ -32,7 +32,8 @@ Landing de captación del **Método Kaizen** (David Alzas Coach): pérdida de gr
 
 ## Dirección de arte
 
-- **Concepto:** la página es una ascensión. El cielo y las montañas son el hilo; las secciones opacas son los altos del camino y el hueso marca que ya hay luz.
+- **Concepto:** la página es una ascensión. La montaña es el hilo; las secciones opacas son los altos del camino y el hueso marca que ya hay luz.
+- **Fotos de la montaña:** cuatro imágenes de la misma cumbre (noche, hora azul, primera luz, amanecer arriba), generadas con IA. Solo paisaje: David y sus clientes salen siempre con sus fotos reales.
 - **Color (variables en `styles.css`):** noche `#05070D`, azul `#2B63D6`, azul claro `#4C7DF0`, hielo `#A9C3FF`, azul profundo `#1141A3`, hueso `#EFECE4`, amanecer `#F2B38B`.
 - **Letras:** Anton (titulares, mayúsculas), Instrument Sans (texto), JetBrains Mono (etiquetas pequeñas).
 - **Énfasis en titulares:** misma letra de titulares, en azul hielo (en hueso, azul profundo). En la portada el conector «Y QUE ESTA VEZ» va en contorno.
@@ -43,17 +44,17 @@ Landing de captación del **Método Kaizen** (David Alzas Coach): pérdida de gr
 
 | # | Sección | `id` | Qué hace |
 |---|---|---|---|
-| 1 | Portada | `#hero` | «Pierde grasa y que esta vez dure». David recortado entre las dos palabras. CTA y prueba social. |
+| 1 | Portada | `#hero` | «Pierde grasa y que esta vez dure». David recortado entre las dos palabras, bajo la Vía Láctea y con la cumbre al fondo. CTA y prueba social. |
 | 2 | Los 52 lunes | `#problema` | Escena fija: el contador sube y las semanas se tachan. Después, seis frases del cliente. |
 | 3 | Historia | `#historia` | De 65 a 95 kg, formación, −25 kg en 9 meses. Tres fotos. |
 | 4 | Manifiesto | `#kaizen` | Qué significa Kaizen; las palabras se encienden al bajar. |
 | 5 | Mecanismo | `#metodo` | Gráfico «rebote frente a paso a paso» (ilustración) y tabla comparativa. |
-| 6 | El ascenso | `#ascenso` | Escena fija: cinco etapas; la cumbre se acerca y amanece. |
+| 6 | El ascenso | `#ascenso` | Escena fija: cinco etapas sobre una película de cuatro fotos que cambian con las etapas (noche → hora azul → primera luz → cumbre). |
 | 7 | Resultados | `#resultados` | Cifras y tres casos como copias fotográficas. |
 | 8 | La mochila | `#incluye` | Qué recibe el cliente; mapa topográfico de fondo; nota de inversión. |
 | 9 | Para quién | `#para-quien` | Permiso de ascenso con sellos «Apto» / «No apto». |
 | 10 | Dudas | `#dudas` | Seis objeciones. |
-| 11 | La cumbre | `#aplicar` | Amanecer, pasos, compromiso y formulario. Cierre: «Que este sea el último lunes…». |
+| 11 | La cumbre | `#aplicar` | Foto del amanecer sobre el mar de nubes, pasos, compromiso y formulario. Cierre: «Que este sea el último lunes…». |
 
 Hay un botón de solicitud cada una o dos pantallas. En móvil hay un botón fijo que se oculta en la portada, junto al formulario y cuando ya se ve un botón de la propia sección.
 
@@ -63,17 +64,20 @@ Hay un botón de solicitud cada una o dos pantallas. En móvil hay un botón fij
 kaizen/
   index.html        ← GENERADO. No editar a mano.
   assets/           ← fotos, logos, imagen para compartir
+    fondos/         ← fondos de la montaña listos para la web (escritorio -d, móvil -m)
   src/
     styles.css  body.html  app.js  shader.frag   ← fuentes
     build.py                                     ← monta index.html
-    tools/                                       ← capturas, pruebas, vídeo
+    fondos/                                      ← las cuatro imágenes originales (1024 px)
+    tools/                                       ← capturas, pruebas, vídeo, fondos
   NOTAS.md
 ```
 
 - **Montar:** `python3 kaizen/src/build.py` (con `--artifact RUTA.html` genera además el fragmento para la vista previa de claude.ai).
 - **Librerías:** GSAP 3.12.5 + ScrollTrigger (cdnjs) y Lenis 1.0.42 (jsDelivr). Lenis solo con ratón; en móvil el scroll es nativo.
-- **El cielo:** un único `<canvas id="sky">` fijo con un shader WebGL (`shader.frag`) que dibuja estrellas, cordilleras en capas, la cumbre y el mar de nubes. Se controla con cuatro valores: `uAlt` (altura), `uDawn` (amanecer), `uPeak` (cumbre visible) y `uSummit` (vista desde arriba). Cada sección con clase `.window` deja ver el cielo y fija esos valores con `data-alt`, `data-dawn`, `data-peak`, `data-summit`; el ascenso los va cambiando con el scroll.
-- **Sin movimiento:** si el visitante tiene «reducir movimiento», no se añade la clase `js-motion`: todo se muestra estático y sin escenas fijas. Si no hay WebGL, se añade `no-gl` y queda un degradado.
+- **Fondos fotográficos:** la portada y la cumbre llevan un `.plate` (foto fija a la pantalla; la sección la recorta con `clip-path` y el contenido pasa por delante). El ascenso lleva `.as-film`: cuatro `.as-plate` apiladas que se funden y se desplazan según el scroll; los tramos están en `SPAN` dentro de `app.js`. Cada foto tiene versión apaisada y vertical (`<picture>`). La de la portada se precarga; las demás se descargan al acercarse (`data-src`).
+- **El cielo por código (respaldo):** `<canvas id="sky">` con un shader WebGL (`shader.frag`) que dibuja estrellas, cordilleras, la cumbre y el mar de nubes. Solo se crea si la foto de la sección visible tarda más de 450 ms o falla. Se controla con `uAlt`, `uDawn`, `uPeak` y `uSummit`, que cada sección `.window` fija con `data-alt`, `data-dawn`, `data-peak`, `data-summit`.
+- **Sin movimiento:** si el visitante tiene «reducir movimiento», no se añade la clase `js-motion`: todo se muestra estático, sin escenas fijas ni película (la portada y la cumbre conservan su foto). Si no hay fotos ni WebGL, se añade `no-gl` y queda un degradado.
 - **Formulario:** `iframe` de Jotform más su script oficial, que ajusta la altura y pasa los parámetros de la dirección (por ejemplo `?utm_source=instagram`). Dentro de una vista previa enmarcada (claude.ai) se muestra un botón que abre el formulario, porque allí no se pueden incrustar páginas externas.
 - **Recorte de la portada:** `assets/hero-david-cut.webp` se obtuvo de la foto original con dos modelos de recorte (`tools/recorte_mascaras.py`), combinando las dos máscaras y limpiando el borde.
 
@@ -95,7 +99,7 @@ node kaizen/src/tools/shoot.js CARPETA_SALIDA "d:1440x900,m:390x844:m"
 node kaizen/src/tools/video.js CARPETA_FOTOGRAMAS m 25
 ```
 
-`test.js` comprueba formulario, contador de lunes, ascenso, botón fijo, movimiento reducido, vista enmarcada y sin WebGL. `shoot.js` captura cada sección. `video.js` graba el recorrido fotograma a fotograma (`m` móvil, `d` escritorio); después se monta con `ffmpeg`. `og.js` regenera la imagen para compartir.
+`test.js` comprueba formulario, fondos, contador de lunes, ascenso y su película, botón fijo, movimiento reducido, vista enmarcada, respaldo sin fotos y sin WebGL. `shoot.js` captura cada sección. `video.js` graba el recorrido fotograma a fotograma (`m` móvil, `d` escritorio); después se monta con `ffmpeg`. `og.js` regenera la imagen para compartir.
 
 ### Actualizar la vista previa de claude.ai
 
@@ -111,60 +115,47 @@ Leer primero el artifact (acción `read` con su dirección) y publicar con esa m
 - Política de privacidad enlazada desde la página.
 - Publicación: decidir si se crea un proyecto de Vercel solo para Kaizen y se hace público.
 - Probar la fluidez en un móvil real.
+- Decidir si se añade vídeo a la montaña (necesita créditos de Higgsfield).
 
-## Plan Higgsfield
+## Fondos de la montaña (hecho) y vídeo (opcional)
 
-David quiere usar su conector **«highsfield»** (Higgsfield, generación de imagen y vídeo con IA) para dar a la página el nivel fotorrealista de la referencia de las montañas. El conector solo se carga al iniciar una sesión; debe estar conectado en https://claude.ai/customize/connectors.
+### Cómo se hicieron las fotos
 
-### Lo comprobado con el conector
+- Generadas con la herramienta de imagen de **Figma** (modelo `gemini-3.1-flash-image`, 1024×1024), en un archivo de Figma llamado «Kaizen · Fondos de la landing». Cada imagen gasta créditos de IA de la cuenta de Figma de David.
+- Los originales están en `kaizen/src/fondos/k0…k3.webp`. Los enlaces de descarga de Figma caducan a los 7 días.
+- Ampliadas a 4096 px en local con `tools/ampliar.py` y el modelo `clear_reality_x4.onnx` (github.com/facefusion/facefusion-assets, versión `models-3.0.0`). Da un resultado más natural que `real_esrgan_x2` y `ultra_sharp_x4`.
+- Recortadas para la web con `tools/fondos.py` (ventanas y tamaños dentro del script). La portada usa otro recorte de la imagen de la noche, con la cumbre a un lado.
 
-- El conector se llama `highsfield` y sus herramientas empiezan por `mcp__highsfield__`. Generar exige créditos en la cuenta de Higgsfield (`balance` los muestra; `generate_image` y `generate_video` admiten `get_cost: true` para saber el coste sin gastar).
-- **Imagen:** `nano_banana_2_1`, `gpt_image_2` y `cinematic_studio_2_5` admiten imagen de referencia y hasta 4K; a 2K cuestan 2 créditos por imagen.
-- **Vídeo con imagen inicial y final** (`start_image`, `end_image`), clip de 5 s: `minimax_h3` (2K) 10 créditos; `wan3_0` (1080p, sin audio) 17,5; `flux_3_video` (1080p, sin audio) 40. Sin imagen final, `seedance_2_5` cuesta 35.
-- Presupuesto orientativo del plan: 5 imágenes (10 créditos) y 4 clips (40–70 créditos).
-- **Formato cuadrado:** generar las imágenes clave en 1:1 con la cumbre algo a la derecha del centro. Un mismo archivo sirve para el recorte 16:9 de escritorio y el 9:16 de móvil.
-- **Antes del vídeo, las imágenes ya dan resultado:** con las cuatro imágenes clave se puede montar el ascenso como fundido entre ellas guiado por el scroll, con un leve movimiento de cámara. El vídeo es una mejora posterior.
+```bash
+python3 kaizen/src/tools/ampliar.py clear_reality_x4.onnx kaizen/src/fondos/k0.webp MAESTROS/k0.png
+```
+
+```bash
+python3 kaizen/src/tools/fondos.py MAESTROS kaizen/assets/fondos
+```
+
+Descripciones usadas (todas terminan en «No people, no animals, no buildings, no text, no logos, no watermark»):
+
+| Clave | Momento | Idea |
+|---|---|---|
+| k0 | Campo base, noche | Valle oscuro mirando hacia el Cervino nevado bajo la Vía Láctea, niebla en el valle, sendero en primer plano. |
+| k1 | Media ladera, hora azul | Desde una arista por encima de la niebla, la cumbre más cerca, huellas en la nieve, primer resplandor en el horizonte. |
+| k2 | Arista alta, primera luz | La pirámide final con luz rosada, valles en sombra azul, mar de nubes. |
+| k3 | Cumbre, amanecer | Desde arriba: arista nevada con huellas, mar de nubes, sol recién salido. |
+
+Para que la montaña sea la misma en todas, en las descripciones se nombra el Cervino («the Matterhorn»).
 
 ### Reglas
 
-1. **Solo paisaje.** No generar ni retocar personas, cuerpos, fotos de antes y después ni testimonios. David y sus clientes salen siempre con sus fotos reales.
-2. **Enseñar antes de integrar.** Cada generación gasta créditos de su cuenta: empezar por las imágenes fijas, enviárselas y esperar su visto bueno antes de generar vídeo.
-3. **El rendimiento manda.** Contenido principal visible en menos de 2,5 s en 4G. Vídeo siempre sin sonido, con imagen de espera, y en móvil una versión más ligera o una imagen fija.
-4. **El cielo por código se queda** como respaldo (mientras carga, sin movimiento, sin WebGL).
+1. **Solo paisaje.** No generar ni retocar personas, cuerpos, fotos de antes y después ni testimonios.
+2. **Enseñar antes de integrar** y avisar de que cada generación gasta créditos.
+3. **El rendimiento manda.** Cada fondo pesa unos 100 KB; si se añade vídeo, siempre sin sonido, con imagen de espera y, en móvil, versión ligera o imagen fija.
 
-### Qué generar
+### Mejora opcional: vídeo con Higgsfield
 
-Aspecto común para todos los planos (añadir al final de cada descripción):
+David tiene un conector llamado `highsfield` (herramientas `mcp__highsfield__*`). Generar exige créditos en su cuenta de Higgsfield (`balance` los muestra; `generate_image` y `generate_video` admiten `get_cost: true` para saber el coste sin gastar).
 
-> Photorealistic cinematic alpine landscape, large-format cinema camera, 35mm anamorphic lens, natural atmospheric haze, fine film grain, deep navy shadows, cobalt blue midtones, restrained contrast. No people, no animals, no buildings, no text, no logos, no watermark.
-
-**A. El ascenso (prioridad 1).** Cuatro imágenes clave de la misma montaña y tres tramos de vídeo que las unen. Sustituye al cielo por código en `#ascenso`: el vídeo avanza con el scroll.
-
-| Clave | Momento | Descripción |
-|---|---|---|
-| K0 | Campo base, noche | Wide low-angle view from a dark valley floor at night, looking up at one dominant sharp snow-capped peak, slightly right of centre, sky full of stars, thin fog in the valley, layered ridgelines in near-black silhouette, faint cold moonlight on the snow. |
-| K1 | Media ladera, hora azul | Same mountain, camera higher on the slope at blue hour before dawn, the peak larger and closer, rock ribs and snowfields visible, valley fog below, last stars fading, a faint warm line on the horizon. |
-| K2 | Arista alta, primera luz | Same mountain from a high ridge at first light, the snow face catching warm pink-orange alpenglow while the valleys stay deep blue, clouds filling the valleys below. |
-| K3 | Cumbre, amanecer | View from the summit above an endless sea of clouds at sunrise, warm orange band on the horizon, deep blue sky above, a few distant peaks breaking through the clouds, calm and vast. |
-
-Usar K0 como imagen de referencia para K1–K3 y así mantener la misma montaña. Tramos de vídeo de unos 5 s (K0→K1, K1→K2, K2→K3), con imagen inicial y final si el modelo lo permite:
-
-> Slow, steady aerial ascent: the camera rises and drifts forward toward the peak in one continuous move, mist moving gently, no cuts, no camera shake.
-
-Formato 16:9 con la cumbre cerca del centro (en móvil se verá la franja central). Si el resultado en vertical no convence, generar también 9:16.
-
-**B. La cumbre (prioridad 2).** Un bucle de 5–8 s para `#aplicar`:
-
-> Above the clouds at sunrise, the sea of clouds drifts slowly, the light grows very gently, locked-off camera, seamless loop.
-
-**C. La portada (prioridad 3, opcional).** Una imagen fija de fondo, con el centro despejado para colocar encima el recorte real de David:
-
-> Night alpine panorama, starry sky, layered blue mountain ridges low in the frame, soft cobalt glow in the centre of the sky, calm empty centre.
-
-No animar el retrato de David con IA salvo que él lo pida expresamente; si se prueba, comparar con la foto original y descartar cualquier resultado que cambie su cara o su físico.
-
-### Cómo integrarlo
-
-- **Ascenso:** extraer los fotogramas (`ffmpeg`) a WebP: unos 120 a 1280×720 para escritorio y unos 90 a 720 px de ancho para móvil, con un peso total orientativo de 2–4 MB. Dibujarlos en un `<canvas>` dentro de `.ascent-stage`, detrás del velo, usando el mismo progreso que ya calcula la función `update(p)` del ascenso en `app.js`. Cargar primero uno de cada cuatro fotogramas y luego el resto, y empezar a cargar cuando la sección se acerque a la pantalla. Hasta entonces se ve el cielo por código.
-- **Cumbre y portada:** `<video muted playsinline loop autoplay poster="…">` solo en pantallas grandes; en móvil, la imagen fija.
-- Repetir `test.js`, las capturas y el vídeo del recorrido, y enseñárselo a David antes de publicar.
+- **Vídeo con imagen inicial y final** (`start_image`, `end_image`), clip de 5 s: `minimax_h3` (2K) 10 créditos; `wan3_0` (1080p, sin audio) 17,5; `flux_3_video` (1080p, sin audio) 40.
+- Con créditos, se podrían unir las cuatro fotos con tres clips (k0→k1, k1→k2, k2→k3) y un bucle del mar de nubes para la cumbre: unos 40–70 créditos. Descripción del movimiento: «Slow, steady aerial ascent: the camera rises and drifts forward toward the peak in one continuous move, mist moving gently, no cuts, no camera shake.»
+- Integración: extraer los fotogramas a WebP (unos 120 en escritorio y 90 en móvil, 2–4 MB en total), dibujarlos en un `<canvas>` dentro de `.as-film` con el mismo progreso que usa `film(f)`, y cargarlos al acercarse la sección. Las fotos actuales quedarían como imagen de espera.
+- No animar el retrato de David con IA salvo que él lo pida expresamente; si se prueba, comparar con la foto original y descartar cualquier resultado que cambie su cara o su físico.
