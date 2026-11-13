@@ -105,12 +105,13 @@ a{color:inherit}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(to bottom,rgba(5,7,13,0),rgba(5,7,13,.5) 50%,rgba(5,7,13,.9) 88%,var(--night));pointer-events:none}
 .hero-stage{position:relative;flex:0 0 auto;height:var(--stage-h);width:100%;max-width:1760px;margin-inline:auto}
 .hero-glow{position:absolute;left:50%;top:46%;width:min(74vw,900px);aspect-ratio:1;margin:calc(min(74vw,900px) / -2) 0 0 calc(min(74vw,900px) / -2);background:radial-gradient(closest-side,rgba(43,99,214,.46),rgba(43,99,214,.26) 30%,rgba(43,99,214,.11) 58%,rgba(43,99,214,.03) 82%,rgba(43,99,214,0));pointer-events:none}
-.hero-fig{position:absolute;z-index:2;inset:-3% 0 auto 0;margin:0 auto;height:112%;aspect-ratio:607/910;pointer-events:none;translate:-7% 0}
-.hero-fig img{width:100%;height:100%;object-fit:cover;filter:drop-shadow(0 0 46px rgba(76,125,240,.42)) drop-shadow(0 0 3px rgba(169,195,255,.35));-webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent 96%);mask-image:linear-gradient(to bottom,#000 70%,transparent 96%)}
+/* Logotipo Kaizen en el hueco del titular (sustituye a la foto de David desde el 13-11-2026) */
+.ht-gap{display:flex;align-items:center;justify-content:center}
+.hero-mark{display:block;width:88%;height:auto;overflow:visible;fill:none;stroke:var(--blue-hi);stroke-width:4.5;stroke-linejoin:miter;filter:drop-shadow(0 0 18px rgba(76,125,240,.75)) drop-shadow(0 0 2px rgba(169,195,255,.5))}
 .hero-title{position:absolute;inset:0;margin:0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;line-height:.86;letter-spacing:.004em}
 .ht-w{display:inline-block;overflow:hidden;padding:.09em .05em .2em;margin:-.09em -.05em -.2em;vertical-align:top}
 .ht-w>span,.ht-w>em{display:inline-block}
-.ht1{position:absolute;z-index:1;left:0;right:0;top:25%;display:grid;grid-template-columns:1fr clamp(150px,calc(var(--stage-h) * .46),470px) 1fr;font-size:clamp(72px,13.5vw,262px)}
+.ht1{position:absolute;z-index:1;left:0;right:0;top:34%;display:grid;grid-template-columns:1fr clamp(150px,calc(var(--stage-h) * .46),470px) 1fr;font-size:clamp(72px,13.5vw,262px)}
 .ht-l{text-align:right}.ht-r{text-align:left}
 .ht2{position:absolute;z-index:3;left:0;right:0;bottom:1%;display:flex;justify-content:center;align-items:baseline;gap:.15em;font-size:clamp(64px,10.4vw,204px);text-shadow:0 4px 40px rgba(5,7,13,.55)}
 .ht2 em{font-size:.5em;letter-spacing:.02em;color:transparent;-webkit-text-stroke:1.6px var(--ice)}
@@ -136,10 +137,10 @@ a{color:inherit}
 }
 @media (max-width:760px), (max-width:1100px) and (orientation:portrait){
   .hero-stage{flex:0 0 auto;height:47vh;height:47svh;min-height:300px;max-height:600px}
-  .hero-fig{inset:0 0 auto 0;height:116%}
   .hero-glow{top:40%}
   .ht1{z-index:3;top:auto;bottom:1.1em;display:block;text-align:center;font-size:min(16.6vw,150px);text-shadow:0 4px 30px rgba(5,7,13,.6)}
-  .ht-gap{display:inline-block;width:.2em}
+  .ht-gap{display:inline-block;width:.2em;position:relative}
+  .hero-mark{position:absolute;left:50%;bottom:1.12em;width:min(46vw,250px);transform:translateX(-50%)}
   .ht2{bottom:.1em;font-size:min(16.6vw,150px)}
   .ht2 em{font-size:.47em;-webkit-text-stroke-width:1.3px}
   .hero-tag-l,.hero-tag-r{display:none}
@@ -153,7 +154,6 @@ a{color:inherit}
 
 @media (prefers-reduced-motion:no-preference){
   @keyframes rise{from{transform:translateY(120%)}to{transform:none}}
-  @keyframes figin{from{opacity:0;transform:scale(1.07)}to{opacity:1;transform:none}}
   @keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
   @keyframes fadein{from{opacity:0}to{opacity:1}}
   @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
@@ -162,7 +162,9 @@ a{color:inherit}
   .hero .ht-r .ht-w>*{animation-delay:.17s}
   .hero .ht2>.ht-w>*{animation-delay:.27s}
   .hero .ht-dure .ht-w>*{animation-delay:.36s}
-  .hero-fig img{animation:figin 1.5s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes markdraw{from{stroke-dasharray:0 1}to{stroke-dasharray:1 0}}
+  .hero-mark path{animation:markdraw 1.5s .25s cubic-bezier(.6,0,.2,1) both}
+  .hero-mark{animation:fadein 1.2s .2s ease-out both}
   .hero-glow{animation:fadein 1.6s ease-out both}
   .hero-tag{animation:fadeup .7s .5s both}
   .hero-sub{animation:fadeup .7s .55s both}

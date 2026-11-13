@@ -275,7 +275,6 @@
     var st = { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true };
     gsap.to('.ht-l .ht-w', { xPercent: -9, ease: 'none', scrollTrigger: st });
     gsap.to('.ht-r .ht-w', { xPercent: 9, ease: 'none', scrollTrigger: st });
-    gsap.to('.hero-fig', { yPercent: 7, ease: 'none', scrollTrigger: st });
   });
 
   // Titulares y textos

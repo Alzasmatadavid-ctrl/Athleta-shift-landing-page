@@ -29,6 +29,7 @@ Landing de captación del **Método Kaizen** (David Alzas Coach): pérdida de gr
 | Color | Azul de marca sobre noche; hueso para pruebas y dudas. |
 | Letra | **Sin cursiva.** No le gusta la cursiva con serifa. |
 | Concepto | «La ascensión»: una subida de la noche al amanecer. |
+| Portada | **Logotipo Kaizen, no foto** (pedido por David el 13-11-2026). El triángulo va dibujado en SVG entre «Pierde» y «grasa»; en móvil, encima del titular. La foto de David sigue en Historia y Resultados. |
 
 ## Dirección de arte
 
@@ -44,7 +45,7 @@ Landing de captación del **Método Kaizen** (David Alzas Coach): pérdida de gr
 
 | # | Sección | `id` | Qué hace |
 |---|---|---|---|
-| 1 | Portada | `#hero` | «Pierde grasa y que esta vez dure». David recortado entre las dos palabras, bajo la Vía Láctea y con la cumbre al fondo. CTA y prueba social. |
+| 1 | Portada | `#hero` | «Pierde grasa y que esta vez dure». El logotipo Kaizen (triángulo en SVG, se dibuja al cargar) entre las dos palabras, bajo la Vía Láctea y con la cumbre al fondo. CTA y prueba social. |
 | 2 | Los 52 lunes | `#problema` | Escena fija: el contador sube y las semanas se tachan. Después, seis frases del cliente. |
 | 3 | Historia | `#historia` | De 65 a 95 kg, formación, −25 kg en 9 meses. Tres fotos. |
 | 4 | Manifiesto | `#kaizen` | Qué significa Kaizen; las palabras se encienden al bajar. |
@@ -79,7 +80,7 @@ kaizen/
 - **El cielo por código (respaldo):** `<canvas id="sky">` con un shader WebGL (`shader.frag`) que dibuja estrellas, cordilleras, la cumbre y el mar de nubes. Solo se crea si la foto de la sección visible tarda más de 450 ms o falla. Se controla con `uAlt`, `uDawn`, `uPeak` y `uSummit`, que cada sección `.window` fija con `data-alt`, `data-dawn`, `data-peak`, `data-summit`.
 - **Sin movimiento:** si el visitante tiene «reducir movimiento», no se añade la clase `js-motion`: todo se muestra estático, sin escenas fijas ni película (la portada y la cumbre conservan su foto). Si no hay fotos ni WebGL, se añade `no-gl` y queda un degradado.
 - **Formulario:** `iframe` de Jotform más su script oficial, que ajusta la altura y pasa los parámetros de la dirección (por ejemplo `?utm_source=instagram`). Dentro de una vista previa enmarcada (claude.ai) se muestra un botón que abre el formulario, porque allí no se pueden incrustar páginas externas.
-- **Recorte de la portada:** `assets/hero-david-cut.webp` se obtuvo de la foto original con dos modelos de recorte (`tools/recorte_mascaras.py`), combinando las dos máscaras y limpiando el borde.
+- **Recorte de David (ya no se usa en la portada; se guarda por si vuelve):** `assets/hero-david-cut.webp` se obtuvo de la foto original con dos modelos de recorte (`tools/recorte_mascaras.py`), combinando las dos máscaras y limpiando el borde.
 
 ### Comprobar
 
