@@ -29,6 +29,7 @@ Landing de captación del **Método Kaizen** (David Alzas Coach): pérdida de gr
 | Color | Azul de marca sobre noche; hueso para pruebas y dudas. |
 | Letra | **Sin cursiva.** No le gusta la cursiva con serifa. |
 | Concepto | «La ascensión»: una subida de la noche al amanecer. |
+| Tarjetas flotantes | «¿Te suena?», Resultados y El acompañamiento van en tarjetas con sombra profunda, escalonadas y con un vaivén lento (pedido por David el 24-11-2026). El vaivén usa la propiedad CSS `translate` para no pisar el `transform` de las animaciones de entrada, y se apaga con movimiento reducido. |
 | Portada | **Logotipo Kaizen, no foto** (pedido por David el 13-11-2026). El triángulo va dibujado en SVG entre «Pierde» y «grasa»; en móvil, encima del titular. La foto de David sigue en Historia y Resultados. |
 
 ## Dirección de arte
@@ -46,13 +47,13 @@ Landing de captación del **Método Kaizen** (David Alzas Coach): pérdida de gr
 | # | Sección | `id` | Qué hace |
 |---|---|---|---|
 | 1 | Portada | `#hero` | «Pierde grasa y que esta vez dure». El logotipo Kaizen (triángulo en SVG, se dibuja al cargar) entre las dos palabras, bajo la Vía Láctea y con la cumbre al fondo. CTA y prueba social. |
-| 2 | Los 52 lunes | `#problema` | Escena fija: el contador sube y las semanas se tachan. Después, seis frases del cliente. |
+| 2 | Los 52 lunes | `#problema` | Escena fija: el contador sube y las semanas se tachan. Después, «¿Te suena?»: seis frases del cliente en tarjetas flotantes (3 columnas escalonadas; 2 en tableta; 1 en móvil). |
 | 3 | Historia | `#historia` | De 65 a 95 kg, formación, −25 kg en 9 meses. Tres fotos. |
 | 4 | Manifiesto | `#kaizen` | Qué significa Kaizen; las palabras se encienden al bajar. |
 | 5 | Mecanismo | `#metodo` | Gráfico «rebote frente a paso a paso» (ilustración) y tabla comparativa. |
 | 6 | El ascenso | `#ascenso` | Escena fija: cinco etapas sobre una película de cuatro fotos que cambian con las etapas (noche → hora azul → primera luz → cumbre). |
-| 7 | Resultados | `#resultados` | Cifras y tres casos como copias fotográficas. |
-| 8 | La mochila | `#incluye` | Qué recibe el cliente; mapa topográfico de fondo; nota de inversión. |
+| 7 | Resultados | `#resultados` | Cifras y tres casos en tarjetas blancas flotantes, con las fotos como copias fotográficas. |
+| 8 | La mochila | `#incluye` | Qué recibe el cliente, en tarjetas flotantes a dos columnas escalonadas (una en móvil); mapa topográfico de fondo; nota de inversión. |
 | 9 | Para quién | `#para-quien` | Permiso de ascenso con sellos «Apto» / «No apto». |
 | 10 | Dudas | `#dudas` | Seis objeciones. |
 | 11 | La cumbre | `#aplicar` | Foto del amanecer sobre el mar de nubes, pasos, compromiso y formulario. Cierre: «Que este sea el último lunes…». |
